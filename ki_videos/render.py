@@ -111,3 +111,50 @@ def render_video(
     ]
     _run(cmd)
     return out
+
+
+def _has_audio(path: Path) -> bool:
+    out = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index",
+         "-of", "csv=p=0", str(path)],
+        check=True, capture_output=True, text=True,
+    )
+    return bool(out.stdout.strip())
+
+
+def concat_clips(clips: list[Path], out: Path, music: Path | None = None) -> Path:
+    """Fügt KI-Videoclips (mit eigenem Ton) zu einem 9:16-Video zusammen."""
+    work = out.parent / "_clips"
+    work.mkdir(exist_ok=True)
+
+    normalized = []
+    for i, clip in enumerate(clips):
+        norm = work / f"norm_{i:02d}.mp4"
+        cmd = ["ffmpeg", "-y", "-i", str(clip)]
+        if not _has_audio(clip):
+            cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo", "-shortest"]
+        cmd += [
+            "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS}",
+            "-map", "0:v", "-map", "0:a" if _has_audio(clip) else "1:a",
+            "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
+            "-c:a", "aac", "-ar", "44100", "-ac", "2", str(norm),
+        ]
+        _run(cmd)
+        normalized.append(norm)
+
+    concat_list = work / "clips.txt"
+    concat_list.write_text("".join(f"file '{c.resolve()}'\n" for c in normalized))
+
+    cmd = ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list)]
+    if music:
+        cmd += ["-stream_loop", "-1", "-i", str(music), "-filter_complex",
+                "[1:a]volume=0.12[m];[0:a][m]amix=inputs=2:duration=first:dropout_transition=0[a]",
+                "-map", "0:v", "-map", "[a]"]
+    else:
+        cmd += ["-map", "0:v", "-map", "0:a"]
+    cmd += [
+        "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out),
+    ]
+    _run(cmd)
+    return out

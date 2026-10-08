@@ -5,6 +5,7 @@
     python -m ki_videos erstellen --alle
     python -m ki_videos offen
     python -m ki_videos hochladen output/tier_fakten/20261008-...   (oder --alle-offenen)
+    python -m ki_videos verwerfen output/fruechte_drama/20261008-...  (schlechtes Video löschen)
 """
 import argparse
 import sys
@@ -36,11 +37,15 @@ def main() -> None:
     up.add_argument("ordner", nargs="*", type=Path)
     up.add_argument("--alle-offenen", action="store_true")
 
+    rm = sub.add_parser("verwerfen", help="Schlechtes Video löschen (Serie macht dann an derselben Stelle weiter)")
+    rm.add_argument("ordner", nargs="+", type=Path)
+
     args = parser.parse_args()
 
     if args.cmd == "nischen":
         for name, n in pipeline.load_niches().items():
-            print(f"{name:20} Profil: {n['upload_profile']:15} Plattformen: {', '.join(n['platforms'])}")
+            art = n.get("mode", "bilder") + (", Serie" if n.get("series") else "")
+            print(f"{name:16} {art:15} Profil: {n['upload_profile']:10} {', '.join(n['platforms'])}")
 
     elif args.cmd == "erstellen":
         names = list(pipeline.load_niches()) if args.alle else [args.nische]
@@ -65,6 +70,11 @@ def main() -> None:
         for folder in folders:
             print(f"Lade hoch: {folder}")
             print(pipeline.upload_folder(folder))
+
+    elif args.cmd == "verwerfen":
+        for folder in args.ordner:
+            pipeline.discard(folder)
+            print(f"Verworfen: {folder}")
 
 
 if __name__ == "__main__":

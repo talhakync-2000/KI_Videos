@@ -1,33 +1,68 @@
 # Eine Nische = ein Satz Accounts (TikTok, Instagram, Facebook, YouTube, Snapchat).
 # "upload_profile" ist der Profilname bei Upload-Post, unter dem genau die Accounts
 # dieser Nische verbunden sind. So landen Videos nie im falschen Account.
+#
+# mode: bilder  -> Standbilder mit Zoom + ElevenLabs-Stimme + Untertitel (günstig)
+# mode: video   -> echte KI-Videoclips mit Ton/Dialog vom Videomodell (teurer)
+# series: true  -> jede Folge knüpft an die vorherige an (Cliffhanger, "Folge N")
+# characters    -> feste Figuren, deren Aussehen in jeden Prompt übernommen wird
 
 niches:
-  dunkle_geschichte:
+  fruechte_drama:
+    mode: video
+    series: true
     language: de
     topic: >
-      Dunkle, wenig bekannte Ereignisse aus der Geschichte (Mysterien, Katastrophen,
-      seltsame Zufälle). Sachlich korrekt, spannend erzählt, keine Gewaltverherrlichung.
-    tone: ruhig, mysteriös, wie ein Dokumentar-Erzähler
-    image_style: >
-      cinematic, dark moody lighting, film grain, historically accurate, 35mm photo,
-      highly detailed
-    voice_id: "HIER_ELEVENLABS_VOICE_ID"
-    upload_profile: geschichte
+      Seifenoper mit Obst- und Gemüse-Figuren in einer Obstschalen-WG. Eifersucht, Intrigen,
+      Geheimnisse, peinliche Momente. Lustig und überdreht, aber nichts Sexuelles.
+    tone: dramatisch-übertrieben wie eine Reality-Soap, mit Humor
+    style: >
+      3D animated, Pixar-like, glossy fruit characters with expressive faces, big eyes and tiny
+      arms, warm kitchen lighting, shallow depth of field, cinematic close-ups
+    characters:
+      - name: Erdbeere Emma
+        look: a glossy red strawberry with green leaf hair, big blue eyes, pink lipstick
+      - name: Banane Bernd
+        look: a tall yellow banana with brown freckles, sunglasses on his head, gold chain
+      - name: Aubergine Alex
+        look: a purple eggplant with a slick green stem hairstyle, smug smile, leather jacket
+      - name: Zitrone Zoe
+        look: a small bright yellow lemon with sour expression, round glasses, gossip queen
+    scenes: 4
+    upload_profile: fruechte
     platforms: [tiktok, instagram, facebook, youtube]
-    hashtags: ["#geschichte", "#mystery", "#wusstestdu"]
-    scenes: 6
+    hashtags: ["#fruechtedrama", "#kidrama", "#fruitlove", "#serie"]
 
-  tier_fakten:
+  ki_asmr:
+    mode: video
+    language: keine Sprache, nur Geräusche
+    topic: >
+      Oddly satisfying ASMR: scharfe Messer schneiden durch ungewöhnliche Materialien
+      (Glasfrüchte, Kristalle, Lava, Seife, Gelee, Eis, Edelsteine), Nahaufnahmen, Schichten
+      im Inneren. Jedes Video ein neues Objekt-Material-Paar.
+    tone: ruhig, hypnotisch, befriedigend
+    style: >
+      macro close-up, studio lighting, black background, ultra realistic, 4k, slow motion,
+      crisp detailed ASMR cutting sounds, no music, no voice
+    scenes: 2
+    upload_profile: asmr
+    platforms: [tiktok, instagram, facebook, youtube]
+    hashtags: ["#asmr", "#satisfying", "#oddlysatisfying", "#aiasmr"]
+
+  mythen_serie:
+    mode: bilder
+    series: true
     language: de
     topic: >
-      Verblüffende, wahre Fakten über Tiere. Jede Folge ein Tier oder eine Fähigkeit.
-    tone: begeistert, locker, für alle Altersgruppen
-    image_style: >
-      ultra realistic wildlife photography, national geographic style, vivid colors,
-      shallow depth of field
+      Griechische, nordische und ägyptische Mythen als spannende Fortsetzungsgeschichte erzählt
+      (z. B. die Irrfahrt des Odysseus über viele Folgen, danach die nächste Sage).
+      Nur gemeinfreie Sagen, nah an der Überlieferung.
+    tone: episch, spannend, wie ein Hörspiel-Erzähler
+    style: >
+      epic fantasy painting, dramatic lighting, cinematic composition, ancient world,
+      highly detailed, rich colors
     voice_id: "HIER_ELEVENLABS_VOICE_ID"
-    upload_profile: tierfakten
-    platforms: [tiktok, instagram, youtube]
-    hashtags: ["#tiere", "#fakten", "#natur"]
-    scenes: 5
+    scenes: 6
+    upload_profile: mythen
+    platforms: [tiktok, instagram, facebook, youtube]
+    hashtags: ["#mythologie", "#sagen", "#geschichte", "#serie"]
