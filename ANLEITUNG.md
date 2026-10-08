@@ -104,7 +104,7 @@ n8n / Make / Python-Cronjob
 Ein Dienst aus Option 1 hat diese Freigaben schon, deshalb sparst du dir damit wochenlangen Aufwand.
 
 ### Beispiel-Skript
-`scripts/upload.py` lädt ein Video über die Upload-Post-API auf mehrere Plattformen hoch (siehe Datei).
+Die komplette Pipeline (Skript, Bilder, Stimme, Schnitt, Upload) liegt in `ki_videos/`. Wie du sie benutzt, steht in der `README.md`.
 
 ---
 

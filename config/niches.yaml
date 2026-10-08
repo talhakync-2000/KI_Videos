@@ -1,0 +1,33 @@
+# Eine Nische = ein Satz Accounts (TikTok, Instagram, Facebook, YouTube, Snapchat).
+# "upload_profile" ist der Profilname bei Upload-Post, unter dem genau die Accounts
+# dieser Nische verbunden sind. So landen Videos nie im falschen Account.
+
+niches:
+  dunkle_geschichte:
+    language: de
+    topic: >
+      Dunkle, wenig bekannte Ereignisse aus der Geschichte (Mysterien, Katastrophen,
+      seltsame Zufälle). Sachlich korrekt, spannend erzählt, keine Gewaltverherrlichung.
+    tone: ruhig, mysteriös, wie ein Dokumentar-Erzähler
+    image_style: >
+      cinematic, dark moody lighting, film grain, historically accurate, 35mm photo,
+      highly detailed
+    voice_id: "HIER_ELEVENLABS_VOICE_ID"
+    upload_profile: geschichte
+    platforms: [tiktok, instagram, facebook, youtube]
+    hashtags: ["#geschichte", "#mystery", "#wusstestdu"]
+    scenes: 6
+
+  tier_fakten:
+    language: de
+    topic: >
+      Verblüffende, wahre Fakten über Tiere. Jede Folge ein Tier oder eine Fähigkeit.
+    tone: begeistert, locker, für alle Altersgruppen
+    image_style: >
+      ultra realistic wildlife photography, national geographic style, vivid colors,
+      shallow depth of field
+    voice_id: "HIER_ELEVENLABS_VOICE_ID"
+    upload_profile: tierfakten
+    platforms: [tiktok, instagram, youtube]
+    hashtags: ["#tiere", "#fakten", "#natur"]
+    scenes: 5
