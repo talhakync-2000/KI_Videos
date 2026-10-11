@@ -9,6 +9,7 @@
 # posting_times -> Upload-Slots (Uhrzeit in "timezone"); "freigeben" verteilt Videos darauf
 # active: false -> Kanal pausiert ("erstellen --alle" überspringt ihn)
 # subtitle_color -> Farbe der Untertitel im Bilder-Modus (Markenfarbe)
+# youtube_category -> 24 = Unterhaltung, 27 = Bildung; youtube_playlist_id -> optional
 #
 # Reihenfolge = Priorität laut Marktanalyse trends/2026-10-11-marktanalyse.md
 # Branding (Namen, Bios, Profilbilder) steht in branding/BRANDING.md.
@@ -35,6 +36,7 @@ niches:
     subtitle_color: "#F2C14E"
     scenes: 8
     upload_profile: kapitalverbrechen
+    youtube_category: 27
     platforms: [tiktok, instagram, facebook, youtube]
     hashtags: ["#kapitalverbrechen", "#truecrime", "#geld", "#betrug", "#wirtschaft"]
     timezone: Europe/Berlin
@@ -70,6 +72,7 @@ niches:
         look: a fuzzy brown kiwi girl, cut open on top showing bright green flesh like a hairdo, shy smile
     scenes: 4
     upload_profile: saftladen
+    youtube_category: 24
     platforms: [tiktok, instagram, facebook, youtube]
     hashtags: ["#saftladen", "#obstdrama", "#kidrama", "#fruitloveisland", "#fyp"]
     timezone: Europe/Berlin
@@ -118,6 +121,7 @@ niches:
     subtitle_color: "#FFFFFF"
     scenes: 7
     upload_profile: sagenhaft
+    youtube_category: 27
     platforms: [tiktok, instagram, facebook, youtube]
     hashtags: ["#sagenhaft", "#mythologie", "#odysseus", "#griechischemythologie", "#fyp"]
     timezone: Europe/Berlin

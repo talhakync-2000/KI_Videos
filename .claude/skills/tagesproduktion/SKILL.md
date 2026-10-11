@@ -52,4 +52,4 @@ Kurz auf Deutsch:
 - Geschätzte Kosten (Video-Modus ca. 1–3 $ pro Clip, Bilder-Modus ein paar Cent)
 - Was der User tun muss: z. B. Trend-Sound in der App nachtragen, auf Kommentare antworten, Statistiken schicken
 
-Die Uploads selbst laufen automatisch über die Windows-Aufgabe aus `setup/upload-job.ps1`.
+`freigeben` schickt jedes Video sofort an Upload-Post, das es zur Posting-Zeit veröffentlicht. Wenn `freigeben` „lokal geplant (Upload-Post-Fehler …)“ meldet, nenne dem User den Fehler. Die Windows-Aufgabe aus `setup/upload-job.ps1` holt es dann zur Posting-Zeit nach. Zeigt `plan` „TEILWEISE FEHLGESCHLAGEN“, mit `hochladen <ordner>` erneut versuchen.

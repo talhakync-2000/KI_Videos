@@ -52,6 +52,8 @@ def main() -> None:
     rel = sub.add_parser("freigeben", help="Geprüfte Videos auf den nächsten Posting-Slot legen")
     rel.add_argument("ordner", nargs="*", type=Path)
     rel.add_argument("--alle-offenen", action="store_true")
+    rel.add_argument("--lokal", action="store_true",
+                     help="Nicht sofort an Upload-Post schicken, sondern zur Posting-Zeit per Upload-Job")
 
     sub.add_parser("plan", help="Geplante Uploads anzeigen")
 
@@ -97,14 +99,21 @@ def main() -> None:
 
     elif args.cmd == "freigeben":
         for folder in pipeline.pending() if args.alle_offenen else args.ordner:
-            slot = pipeline.schedule(folder)
-            print(f"{_when(slot)}  {folder.parent.name:12} {folder.name}")
+            slot, error = pipeline.schedule(folder, push=not args.lokal)
+            if args.lokal:
+                where = "lokal geplant"
+            elif error:
+                where = f"lokal geplant (Upload-Post-Fehler: {error})"
+            else:
+                where = "bei Upload-Post eingeplant"
+            print(f"{_when(slot)}  {folder.parent.name:18} {folder.name}  -> {where}")
 
     elif args.cmd == "plan":
-        planned = [(datetime.fromisoformat(pipeline._read_meta(f)["scheduled_at"]), f)
-                   for f in pipeline.by_status("scheduled")]
-        for when, folder in sorted(planned):
-            print(f"{_when(when)}  {folder.parent.name:12} {folder.name}")
+        for when, folder, where in pipeline.planned():
+            print(f"{_when(when)}  {folder.parent.name:18} {where:11} {folder.name}")
+        for folder in pipeline.by_status("partial"):
+            missing = ", ".join(pipeline._read_meta(folder).get("failed_platforms", []))
+            print(f"TEILWEISE FEHLGESCHLAGEN ({missing}): {folder}  -> erneut: hochladen {folder}")
 
     elif args.cmd == "hochladen":
         if args.faellige:
@@ -117,6 +126,10 @@ def main() -> None:
             try:
                 print(f"Lade hoch: {folder}")
                 print(pipeline.upload_folder(folder))
+                missing = pipeline._read_meta(folder).get("failed_platforms")
+                if missing:
+                    failed = True
+                    print(f"FEHLGESCHLAGEN auf: {', '.join(missing)} -> erneut: hochladen {folder}", file=sys.stderr)
             except Exception as e:
                 failed = True
                 print(f"FEHLER bei {folder}: {e}", file=sys.stderr)

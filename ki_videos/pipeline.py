@@ -131,18 +131,33 @@ def generate(niche_name: str, theme: str | None = None, script_file: Path | None
 
 
 def upload_folder(folder: Path) -> dict:
+    """Schickt ein Video an Upload-Post.
+
+    - Liegt der geplante Slot noch in der Zukunft, plant Upload-Post den Post selbst ein
+      (der PC muss zur Posting-Zeit nicht laufen).
+    - Status "partial": nur die Plattformen, die beim letzten Mal fehlgeschlagen sind.
+    """
     meta = _read_meta(folder)
     if meta["status"] == "uploaded":
         raise RuntimeError(f"{folder} wurde schon hochgeladen")
     niche = load_niches()[meta["niche"]]
+    platforms = meta["failed_platforms"] if meta["status"] == "partial" else niche["platforms"]
 
-    result = upload.upload_video(
-        folder / meta["video"], meta["title"], meta["description"],
-        niche["upload_profile"], niche["platforms"],
-    )
-    meta["status"] = "uploaded"
-    meta["uploaded_at"] = datetime.now().isoformat(timespec="seconds")
-    meta["upload_result"] = result
+    publish_at = None
+    if meta.get("scheduled_at"):
+        planned = datetime.fromisoformat(meta["scheduled_at"])
+        if planned > datetime.now().astimezone() + timedelta(minutes=2):
+            publish_at = planned
+
+    fields = upload.build_fields(meta, niche, platforms, publish_at)
+    key = f"{meta['niche']}-{folder.name}-{'-'.join(sorted(platforms))}"[:255]
+    result = upload.upload_video(folder / meta["video"], fields, key)
+
+    failed = upload.failed_platforms(result)
+    meta["status"] = "partial" if failed else "uploaded"
+    meta["failed_platforms"] = failed
+    meta["uploaded_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
+    meta.setdefault("upload_results", []).append(result)
     _write_meta(folder, meta)
     return result
 
@@ -152,6 +167,8 @@ def discard(folder: Path) -> None:
     meta = json.loads((folder / "meta.json").read_text(encoding="utf-8"))
     if meta["status"] == "uploaded":
         raise RuntimeError(f"{folder} ist schon online und kann nicht verworfen werden")
+    if meta["status"] == "partial":
+        raise RuntimeError(f"{folder} ist auf einigen Plattformen schon online und kann nicht verworfen werden")
     history = [h for h in _load_history(meta["niche"]) if h["title"] != meta["title"]]
     _save_history(meta["niche"], history)
     shutil.rmtree(folder)
@@ -175,10 +192,10 @@ def _next_free_slot(niche_name: str, niche: dict) -> datetime:
     taken = {
         datetime.fromisoformat(m["scheduled_at"])
         for m in (_read_meta(p.parent) for p in OUTPUT.glob(f"{niche_name}/*/meta.json"))
-        if m.get("scheduled_at") and m["status"] in ("scheduled", "uploaded")
+        if m.get("scheduled_at") and m["status"] in ("scheduled", "uploaded", "partial")
     }
-    # mindestens 10 Minuten Vorlauf, damit der Upload-Job den Slot sicher erwischt
-    earliest = datetime.now(tz) + timedelta(minutes=10)
+    # mindestens 20 Minuten Vorlauf, damit Upload und Verarbeitung vor dem Slot fertig sind
+    earliest = datetime.now(tz) + timedelta(minutes=20)
     day = earliest.date()
     while True:
         for t in times:
@@ -189,8 +206,13 @@ def _next_free_slot(niche_name: str, niche: dict) -> datetime:
         day += timedelta(days=1)
 
 
-def schedule(folder: Path) -> datetime:
-    """Gibt ein geprüftes Video frei und legt es auf den nächsten freien Posting-Slot der Nische."""
+def schedule(folder: Path, push: bool = True) -> tuple[datetime, str | None]:
+    """Gibt ein geprüftes Video frei und legt es auf den nächsten freien Posting-Slot.
+
+    push=True: sofort an Upload-Post schicken, das den Post zum Slot veröffentlicht.
+    Klappt das nicht (kein Netz, Key fehlt), bleibt es lokal geplant und der Upload-Job
+    (hochladen --faellige) lädt es zur Posting-Zeit hoch. Rückgabe: (Slot, Fehlertext oder None).
+    """
     meta = _read_meta(folder)
     if meta["status"] != "review":
         raise RuntimeError(f"{folder} hat Status '{meta['status']}', freigeben geht nur bei 'review'")
@@ -198,7 +220,29 @@ def schedule(folder: Path) -> datetime:
     meta["status"] = "scheduled"
     meta["scheduled_at"] = slot.isoformat(timespec="minutes")
     _write_meta(folder, meta)
-    return slot
+    if not push:
+        return slot, None
+    try:
+        upload_folder(folder)
+        return slot, None
+    except Exception as e:  # lokal geplant lassen, der Upload-Job holt es nach
+        return slot, str(e)
+
+
+def planned() -> list[tuple[datetime, Path, str]]:
+    """Alles, was noch veröffentlicht wird: (Zeitpunkt, Ordner, 'Upload-Post' oder 'lokal')."""
+    now = datetime.now().astimezone()
+    out = []
+    for p in OUTPUT.glob("*/*/meta.json"):
+        m = _read_meta(p.parent)
+        if not m.get("scheduled_at"):
+            continue
+        when = datetime.fromisoformat(m["scheduled_at"])
+        if m["status"] == "scheduled":
+            out.append((when, p.parent, "lokal"))
+        elif m["status"] in ("uploaded", "partial") and when > now:
+            out.append((when, p.parent, "Upload-Post"))
+    return sorted(out)
 
 
 def due() -> list[Path]:

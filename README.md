@@ -8,7 +8,8 @@ Skript (Claude Code schreibt nach content/  ODER  Anthropic-API)
   └─ mode: video  → fal.ai Veo 3 (8-Sek.-Clips mit Ton/Dialog) → FFmpeg (zusammenschneiden)
   → Prüfung (du oder Claude mit dem Watch-Plugin)
   → freigeben: nächster Posting-Slot der Nische
-  → Windows-Aufgabe lädt zur geplanten Zeit über Upload-Post hoch
+  → Upload-Post bekommt das Video sofort und veröffentlicht es selbst zur Posting-Zeit
+    (Fallback: Windows-Aufgabe lädt zur Posting-Zeit hoch, falls der sofortige Upload scheitert)
 ```
 
 ## Die Kanäle
@@ -43,7 +44,7 @@ Videos im Bilder-Modus sind 60–80 Sekunden lang, weil TikTok Creator Rewards n
    | `UPLOAD_POST_API_KEY` | upload-post.com | Upload | ja |
    | `ANTHROPIC_API_KEY` | console.anthropic.com | Skripte ohne Claude Code | nein, wenn Claude Code die Skripte schreibt |
 3. In `config/niches.yaml` bei `kapitalverbrechen` und `sagenhaft` je eine `voice_id` aus ElevenLabs eintragen (Voice Library). Kapitalverbrechen: ruhige, tiefe Podcast-Stimme. Sagenhaft: epischer Erzähler. Nimm zwei verschiedene Stimmen, damit die Kanäle unterscheidbar bleiben.
-4. Automatische Uploads einschalten:
+4. Fallback-Upload einschalten (lädt Videos nach, deren sofortiger Upload gescheitert ist):
    ```powershell
    powershell -ExecutionPolicy Bypass -File setup\upload-job.ps1
    ```
@@ -71,7 +72,16 @@ Jedes Video bekommt einen Ordner unter `output/<nische>/` mit `video.mp4`, `scri
 
 **Feste Figuren:** Unter `characters` steht das Aussehen jeder Figur auf Englisch. Es kommt wörtlich in jeden Prompt, damit die Figuren gleich aussehen.
 
-**Upload-Zeiten:** `posting_times` pro Kanal in `config/niches.yaml`. Ist der PC zur Posting-Zeit aus, wird das Video beim nächsten Lauf der Aufgabe nachgeholt.
+**Upload-Zeiten:** `posting_times` pro Kanal in `config/niches.yaml`. `freigeben` schickt das Video sofort an Upload-Post, mit der Posting-Zeit als `scheduled_date`. Der PC muss zur Posting-Zeit also **nicht** laufen. Scheitert der sofortige Upload, bleibt das Video lokal geplant und die Windows-Aufgabe lädt es zur Posting-Zeit hoch. Mit `freigeben --lokal` geht es immer über die Windows-Aufgabe.
+
+**Was beim Upload automatisch gesetzt wird:**
+- eigene Caption für TikTok und Instagram (Titel, Text, Hashtags)
+- YouTube-Titel (max. 100 Zeichen) mit Tags und Kategorie
+- KI-Label auf allen Plattformen
+- „Nicht für Kinder“ auf YouTube
+- Schutz vor Doppel-Posts
+
+Schlägt eine einzelne Plattform fehl, zeigt `plan` das an, und `hochladen <ordner>` versucht nur diese Plattform erneut.
 
 ## Mit Claude Code arbeiten (ViralAI Manager)
 
@@ -94,14 +104,16 @@ So brauchst du keinen Anthropic-API-Key: Claude Code schreibt die Skripte selbst
 
 Video-Clips sind der große Kostenblock. Günstigere Videomodelle auf fal.ai (z. B. Kling, Hailuo, Wan) trägst du pro Kanal als `video_model` ein. Manche erzeugen aber keinen Ton. Die Preise ändern sich oft, prüf sie bei den Anbietern.
 
-## Vor dem ersten echten Lauf prüfen
+## Vor dem ersten echten Lauf
 
-Der Videoschnitt, die Planung und der Upload-Ablauf sind mit Testdaten geprüft. Die externen APIs konnten beim Bauen nicht live aufgerufen werden. Gleiche deshalb einmal ab:
-- **Upload-Post** (`ki_videos/upload.py`): Endpunkt `api/upload`, Felder `user`, `platform[]`, `title`, `description`, `video`. Siehe docs.upload-post.com. Dort steht auch, ob es ein Feld für das KI-Label gibt.
-- **fal.ai** (`ki_videos/images.py`): Bilder mit `image_size` (`width`/`height`). Videos mit `aspect_ratio`, `duration`, `generate_audio`, Antwort `video.url`. Das unterscheidet sich je nach Videomodell.
-- **ElevenLabs** (`ki_videos/voice.py`): Endpunkt `with-timestamps`.
+Die API-Aufrufe sind gegen die offiziellen Dokumentationen geprüft (Stand 11.10.2026): Upload-Post `POST /api/upload`, fal.ai `veo3/fast` und `flux/dev`, ElevenLabs `with-timestamps`. Videoschnitt, Planung und Upload-Ablauf sind mit Testdaten geprüft. Ein echter Lauf mit deinen Keys steht noch aus.
 
-Am besten zuerst ein einzelnes SliceLab-Video rendern (günstig, ohne Sprache) und mit einem Test-Profil bei Upload-Post hochladen.
+- **Upload-Post-Tarif:** TikTok-Uploads gehen **nur in einem bezahlten Tarif**. TikTok erlaubt höchstens 15 Posts pro Tag und Account.
+- **Facebook:** Pro Upload-Post-Profil genau **eine** Facebook-Seite verbinden. Dann wird sie automatisch genutzt, sonst verlangt die API eine `facebook_page_id`.
+- **TikTok-Konto:** Upload-Post veröffentlicht mit der Standard-Sichtbarkeit des Kontos. Das TikTok-Konto muss also öffentlich sein.
+- **Veo-Auflösung:** Standard ist 720p (günstiger). Die Pipeline skaliert auf 1080×1920 hoch.
+
+Am besten zuerst eine Kapitalverbrechen-Akte rendern (günstig) und mit `hochladen <ordner>` sofort auf einen Test-Account hochladen.
 
 ## Snapchat
 

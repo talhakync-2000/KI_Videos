@@ -87,7 +87,7 @@ n8n / Make / Python-Cronjob
 ### Option 1: Ein Dienst für alle Plattformen (am einfachsten)
 | Dienst | TikTok | IG | FB | YouTube | Snapchat | Hinweis |
 |---|---|---|---|---|---|---|
-| **Upload-Post** | ✅ | ✅ | ✅ | ✅ | ❌ | Eine API für alle, ca. $8–126 pro Monat, 10 Uploads gratis |
+| **Upload-Post** | ✅ | ✅ | ✅ | ✅ | ❌ | Eine API für alle, ca. $8–126 pro Monat. TikTok-Uploads nur im bezahlten Tarif |
 | **ShortSync** | ✅ | ✅ | ? | ✅ | ✅ (Spotlight) | Speziell für Shorts, inklusive Snapchat |
 | **Dash Social** | ✅ | ✅ | ✅ | ✅ | ✅ (Spotlight) | Eher Enterprise |
 | Metricool, Buffer, Later, Publer | ✅ | ✅ | ✅ | ✅ | teils | Bedienung über die Oberfläche, Planung im Kalender |
