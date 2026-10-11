@@ -1,0 +1,44 @@
+{
+  "title": "Akte 005: Der Spieler, der Frankreich regierte 🎲",
+  "description": "Ein schottischer Glücksspieler und Mörder auf der Flucht wird Herr über die Finanzen Frankreichs. Was soll schon schiefgehen? 🎲💸",
+  "hashtags": [
+    "#johnlaw",
+    "#mississippiblase",
+    "#papiergeld"
+  ],
+  "episode_summary": "John Law, schottischer Spieler, tötet 1694 einen Mann im Duell, flieht und überzeugt ab 1716 den französischen Regenten von Papiergeld. Seine Bank und die Mississippi-Kompanie lösen einen Aktienrausch aus, das Wort Millionär entsteht. 1720 platzt die Blase, Law flieht und stirbt 1729 verarmt in Venedig.",
+  "scenes": [
+    {
+      "narration": "Ein Glücksspieler, der wegen Mordes gesucht wurde, bekam die Kontrolle über die Finanzen von ganz Frankreich. Das ist keine Fiktion. Das ist John Law.",
+      "visual_prompt": "Vertical 9:16 image. An elegant 18th century gambler seen from behind at a candlelit card table, piles of gold coins, a sword leaning against the chair. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "London, 1694. Law tötet einen Mann im Duell und wird zum Tod verurteilt. Doch er entkommt aus dem Gefängnis und flieht auf den Kontinent.",
+      "visual_prompt": "Vertical 9:16 image. Two silhouettes in a misty 17th century park at dawn facing each other with swords, a carriage waiting in the fog. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Jahrelang zieht er durch Europa und gewinnt mit Karten und Mathematik. Dabei hat er eine Idee, die damals verrückt klingt: Geld aus Papier statt aus Gold.",
+      "visual_prompt": "Vertical 9:16 image. A hand writing mathematical formulas and drawing a banknote design on parchment, gold coins being pushed aside, candle light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "1716 überzeugt er den Regenten von Frankreich. Das Land ist pleite, und Law verspricht die Rettung. Er gründet eine Bank, die Papiergeld ausgibt.",
+      "visual_prompt": "Vertical 9:16 image. A lavish 18th century French palace hall with chandeliers, a man in a powdered wig presenting a stack of paper banknotes to a seated nobleman, faces in shadow. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Dann kommt die Mississippi-Kompanie. Sie verspricht Gold und Reichtum aus Amerika. Die Aktien explodieren. In Paris entsteht ein neues Wort: Millionär.",
+      "visual_prompt": "Vertical 9:16 image. A narrow 18th century Paris street packed with people waving share certificates, a grand building with a golden sign above, evening light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Doch es gibt kein Gold am Mississippi. Nur Sumpf. Und es wird immer mehr Papiergeld gedruckt, um die Kurse zu stützen.",
+      "visual_prompt": "Vertical 9:16 image. A dark swamp with fog and an abandoned wooden settlement, contrasted with a printing press spewing endless banknotes. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "1720 wollen alle ihr Papier gleichzeitig in Gold tauschen. Es geht nicht. Die Blase platzt. Law flieht aus Paris und stirbt Jahre später verarmt in Venedig.",
+      "visual_prompt": "Vertical 9:16 image. A crowd pressing against the closed iron gates of a bank at night, torn banknotes on the cobblestones, a lone gondola on a dark Venetian canal. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Lehre: Papier ist nur so viel wert wie das Vertrauen dahinter. Und Vertrauen kann man nicht drucken. Folgt für Akte 006.",
+      "visual_prompt": "Vertical 9:16 image. A single banknote burning slowly on a black table, golden embers, red accent glow. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    }
+  ]
+}

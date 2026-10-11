@@ -1,4 +1,5 @@
 """Baut aus Bildern, Voiceover und Wort-Zeitstempeln ein 9:16-Video mit FFmpeg."""
+import math
 import subprocess
 from pathlib import Path
 
@@ -30,7 +31,7 @@ def scene_durations(scene_texts: list[str], alignment: dict, total: float) -> li
 
 
 def _ken_burns_clip(image: Path, duration: float, out: Path, zoom_in: bool) -> None:
-    frames = max(int(duration * FPS), 1)
+    frames = max(math.ceil(duration * FPS), 1)
     zoom = f"1+0.15*on/{frames}" if zoom_in else f"1.15-0.15*on/{frames}"
     vf = (
         f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
@@ -86,7 +87,9 @@ def render_video(
     subtitles: Path,
     out: Path,
     music: Path | None = None,
+    length: float | None = None,
 ) -> Path:
+    """length: Gesamtlänge in Sekunden; ist der Ton kürzer, wird er mit Stille aufgefüllt."""
     work = out.parent / "_clips"
     work.mkdir(exist_ok=True)
 
@@ -108,14 +111,16 @@ def render_video(
         cmd += [
             "-filter_complex",
             f"[0:v]{sub_filter}[v];[2:a]volume=0.12[m];"
-            "[1:a][m]amix=inputs=2:duration=first:dropout_transition=0[a]",
+            "[1:a]apad[voice];[voice][m]amix=inputs=2:duration=first:dropout_transition=0[a]",
             "-map", "[v]", "-map", "[a]",
         ]
     else:
-        cmd += ["-vf", sub_filter, "-map", "0:v", "-map", "1:a"]
+        cmd += ["-vf", sub_filter, "-af", "apad", "-map", "0:v", "-map", "1:a"]
+    # Der Ton ist mit apad endlos aufgefüllt, die Länge kommt vom Bild bzw. von length
+    cmd += ["-t", f"{length or sum(durations):.2f}"]
     cmd += [
         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
-        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", str(out.resolve()),
+        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out.resolve()),
     ]
     _run(cmd, cwd=subtitles.parent)
     return out

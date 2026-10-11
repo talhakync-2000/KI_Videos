@@ -68,9 +68,12 @@ def _build_from_images(niche: dict, name: str, scenes: list[dict], folder: Path,
     print(f"[{name}] Video wird geschnitten ...")
     total = render.audio_duration(voice_path)
     durations = render.scene_durations(scene_texts, alignment, total)
+    # TikTok Creator Rewards zählt nur Videos ab 60 s: notfalls das letzte Bild länger zeigen
+    length = max(total + 0.5, float(niche.get("min_duration", 0)))
+    durations[-1] += length - sum(durations)
     subs = folder / "subtitles.ass"
     render.write_subtitles(voice.words_from_alignment(alignment), subs, niche.get("subtitle_color", "#FFFFFF"))
-    return render.render_video(image_paths, durations, voice_path, subs, folder / "video.mp4", music)
+    return render.render_video(image_paths, durations, voice_path, subs, folder / "video.mp4", music, length)
 
 
 def _build_from_clips(niche: dict, name: str, scenes: list[dict], folder: Path, music: Path | None) -> Path:

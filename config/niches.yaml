@@ -9,6 +9,7 @@
 # posting_times -> Upload-Slots (Uhrzeit in "timezone"); "freigeben" verteilt Videos darauf
 # active: false -> Kanal pausiert ("erstellen --alle" überspringt ihn)
 # subtitle_color -> Farbe der Untertitel im Bilder-Modus (Markenfarbe)
+# min_duration -> Mindestlänge in s (Bilder-Modus); TikTok Creator Rewards zahlt erst ab 60 s
 # youtube_category -> 24 = Unterhaltung, 27 = Bildung; youtube_playlist_id -> optional
 #
 # Reihenfolge = Priorität laut Marktanalyse trends/2026-10-11-marktanalyse.md
@@ -34,6 +35,7 @@ niches:
       faces in shadow or seen from behind, highly detailed
     voice_id: "HIER_ELEVENLABS_VOICE_ID"
     subtitle_color: "#F2C14E"
+    min_duration: 61
     scenes: 8
     upload_profile: kapitalverbrechen
     youtube_category: 27
@@ -119,6 +121,7 @@ niches:
         look: Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak
     voice_id: "HIER_ELEVENLABS_VOICE_ID"
     subtitle_color: "#FFFFFF"
+    min_duration: 61
     scenes: 7
     upload_profile: sagenhaft
     youtube_category: 27

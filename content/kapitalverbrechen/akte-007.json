@@ -1,0 +1,44 @@
+{
+  "title": "Akte 007: Der Hauptmann von Köpenick 🎖️",
+  "description": "1906: Ein arbeitsloser Schuster kauft eine gebrauchte Uniform und erobert damit ein ganzes Rathaus. 🎖️ Kennst du die Geschichte?",
+  "hashtags": [
+    "#hauptmannvonkoepenick",
+    "#berlin",
+    "#hochstapler"
+  ],
+  "episode_summary": "Am 16. Oktober 1906 übernimmt der vorbestrafte Schuster Wilhelm Voigt in einer gebrauchten Hauptmannsuniform das Kommando über Soldaten, besetzt das Rathaus Köpenick, lässt den Bürgermeister festnehmen und nimmt die Stadtkasse mit gut 4000 Mark mit. Er wird gefasst, verurteilt, vom Kaiser begnadigt und zur Legende.",
+  "scenes": [
+    {
+      "narration": "Ein arbeitsloser Schuster kauft eine gebrauchte Uniform. Ein paar Stunden später hat er ein ganzes Rathaus erobert. Ohne einen einzigen Schuss.",
+      "visual_prompt": "Vertical 9:16 image. An old worn Prussian captain's uniform with a spiked helmet hanging in a dim second-hand shop in Berlin, a single light beam on it. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Berlin, 16. Oktober 1906. Wilhelm Voigt, viele Jahre im Gefängnis, ohne Papiere, ohne Arbeit. Er zieht die Uniform eines Hauptmanns an.",
+      "visual_prompt": "Vertical 9:16 image. A man in a Prussian officer's uniform and spiked helmet seen from behind, walking down a foggy Berlin street in 1906 at morning light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Auf der Straße hält er eine Gruppe Soldaten an. Er befiehlt: Mitkommen. Und die Soldaten gehorchen. Denn wer eine Uniform trägt, dem widerspricht man nicht.",
+      "visual_prompt": "Vertical 9:16 image. A small group of Prussian soldiers with rifles standing at attention in front of an officer on a cobblestone street, faces under helmets in shadow. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Mit der Bahn geht es nach Köpenick. Voigt lässt das Rathaus umstellen und marschiert hinein.",
+      "visual_prompt": "Vertical 9:16 image. The red brick town hall of Köpenick with soldiers guarding the entrance, curious citizens watching from a distance, 1906. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Er erklärt den Bürgermeister für verhaftet. Und verlangt die Stadtkasse. Der Kassenwart zählt brav das Geld ab und bekommt sogar eine Quittung.",
+      "visual_prompt": "Vertical 9:16 image. An old wooden town hall office with a cash box full of coins and banknotes on a desk, a hand signing a receipt, warm lamp light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Gut viertausend Mark. Dann verschwindet der Hauptmann. Die Soldaten stehen noch eine halbe Stunde Wache, bevor jemand merkt, was passiert ist.",
+      "visual_prompt": "Vertical 9:16 image. Soldiers still standing guard in front of the town hall at dusk while an empty street stretches away, a lonely spiked helmet silhouette in the distance. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Zehn Tage später wird Voigt gefasst und verurteilt. Doch ganz Deutschland lacht über die Behörden. Schon 1908 begnadigt ihn der Kaiser, und Voigt wird eine Legende.",
+      "visual_prompt": "Vertical 9:16 image. Newspapers from 1906 flying through the air over Berlin with laughing silhouettes of people reading them, golden light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Lehre: Menschen prüfen selten, wer etwas sagt, wenn er nur die richtige Uniform trägt. Heute heißt die Uniform Logo, Titel oder blauer Haken. Folgt für Akte 008.",
+      "visual_prompt": "Vertical 9:16 image. A spiked Prussian helmet on a dark table next to a modern smartphone showing a blank verified badge glow, film noir lighting. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    }
+  ]
+}

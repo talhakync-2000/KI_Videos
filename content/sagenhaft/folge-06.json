@@ -1,0 +1,40 @@
+{
+  "title": "Folge 6: Das Lied der Sirenen 🎶",
+  "description": "Wer ihr Lied hört, kommt nie nach Hause. Odysseus will es trotzdem hören. 🎶 Folge 7 morgen um 18 Uhr.",
+  "hashtags": [
+    "#folge6",
+    "#odyssee",
+    "#sirenen"
+  ],
+  "episode_summary": "Odysseus lässt seinen Männern die Ohren mit Wachs verschließen und sich an den Mast binden, um den Gesang der Sirenen zu hören, die ihm alles Wissen der Welt versprechen. Sie kommen vorbei. Danach müssen sie zwischen dem Strudel Charybdis und dem Ungeheuer Skylla hindurch. Odysseus wählt Skylla und verliert sechs Männer. Am Horizont liegt die Insel des Helios.",
+  "scenes": [
+    {
+      "narration": "Wer ihr Lied hört, steuert sein Schiff freiwillig auf die Felsen. Und Odysseus wollte es trotzdem hören.",
+      "visual_prompt": "Vertical 9:16 image. Mysterious winged sirens singing on dark sea cliffs covered with shipwrecks, a Greek ship approaching through calm water. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Er knetet Wachs und verschließt seinen Männern die Ohren. Dann befiehlt er: Bindet mich an den Mast. Egal, was ich sage, lasst mich nicht los.",
+      "visual_prompt": "Vertical 9:16 image. Greek sailors tying Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak tightly to the mast of a ship with ropes, others pressing wax into their ears. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Das Lied beginnt. Sie singen seinen Namen. Sie kennen seine Geschichte. Und sie versprechen ihm nicht Liebe, sondern etwas viel Gefährlicheres. Alles Wissen der Welt.",
+      "visual_prompt": "Vertical 9:16 image. Close-up of Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak tied to the mast, his eyes wide and longing, golden glowing music notes and visions of knowledge swirling around him. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Odysseus schreit, fleht, befiehlt, ihn loszubinden. Doch seine Männer rudern weiter. Und ziehen die Seile noch fester.",
+      "visual_prompt": "Vertical 9:16 image. Greek sailors rowing hard with wax in their ears and blank faces while Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak struggles violently against the ropes. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Sie schaffen es. Doch der nächste Weg führt durch eine Meerenge. Auf der einen Seite Charybdis, ein Strudel, der dreimal am Tag das Meer verschluckt. Und mit ihm jedes Schiff.",
+      "visual_prompt": "Vertical 9:16 image. A gigantic whirlpool swallowing the sea in a narrow strait between towering cliffs, dark storm sky. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Auf der anderen Seite Skylla. Ein Ungeheuer mit sechs Köpfen. Odysseus muss sich entscheiden. Er wählt Skylla. Sechs Männer verliert er, um nicht alle zu verlieren.",
+      "visual_prompt": "Vertical 9:16 image. A monstrous six-headed sea serpent emerging from a cave in the cliff above a passing ship, sailors raising their shields in terror. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Erschöpft sehen sie eine friedliche Insel. Grüne Wiesen. Und darauf grasen goldene Rinder. Die Rinder des Sonnengottes. Folgt für Folge sieben.",
+      "visual_prompt": "Vertical 9:16 image. A peaceful green island in golden sunset light with majestic golden cattle grazing, the exhausted ship approaching the shore. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    }
+  ]
+}
