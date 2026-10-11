@@ -56,7 +56,8 @@ def _ass_color(hex_color: str) -> str:
     return f"&H00{b}{g}{r}".upper()
 
 
-def write_subtitles(words: list[dict], out: Path, color: str = "#FFFFFF") -> None:
+def write_subtitles(words: list[dict], out: Path, color: str = "#FFFFFF", margin_v: int = 620) -> None:
+    """margin_v: Abstand der Untertitel vom unteren Rand in Pixeln (bei 1920 Höhe)."""
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -64,19 +65,20 @@ PlayResY: {H}
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Arial,86,{_ass_color(color)},&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,620,1
+Style: Default,Arial,86,{_ass_color(color)},&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,{margin_v},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
+    groups = [words[i:i + WORDS_PER_SUBTITLE] for i in range(0, len(words), WORDS_PER_SUBTITLE)]
     lines = []
-    for i in range(0, len(words), WORDS_PER_SUBTITLE):
-        group = words[i:i + WORDS_PER_SUBTITLE]
+    for n, group in enumerate(groups):
         text = " ".join(w["text"] for w in group).upper()
-        lines.append(
-            f"Dialogue: 0,{_ass_time(group[0]['start'])},{_ass_time(group[-1]['end'])},"
-            f"Default,,0,0,0,,{text}"
-        )
+        end = group[-1]["end"]
+        # kurze Pausen überbrücken, damit die Untertitel nicht flackern
+        if n + 1 < len(groups) and groups[n + 1][0]["start"] - end < 1.0:
+            end = groups[n + 1][0]["start"]
+        lines.append(f"Dialogue: 0,{_ass_time(group[0]['start'])},{_ass_time(end)},Default,,0,0,0,,{text}")
     out.write_text(header + "\n".join(lines) + "\n", encoding="utf-8")
 
 

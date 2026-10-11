@@ -10,6 +10,12 @@
     python -m ki_videos hochladen --faellige        (für Aufgabenplanung/Cron alle 15 Min.)
     python -m ki_videos hochladen <ordner>          (sofort hochladen)
     python -m ki_videos verwerfen <ordner>          (schlechtes Video löschen)
+
+    Clip-Modus (nur Material mit Erlaubnis, z. B. Clipping-Kampagnen):
+    python -m ki_videos clips auto <link-oder-datei> [--nische clips] [--anzahl 5]
+    python -m ki_videos clips analysieren <link-oder-datei>   (nur laden + transkribieren)
+    python -m ki_videos clips auswaehlen <arbeitsordner> [--anzahl 5]
+    python -m ki_videos clips schneiden <arbeitsordner>       (nach eigener Auswahl in auswahl.json)
 """
 import argparse
 import sys
@@ -62,6 +68,12 @@ def main() -> None:
     up_sel = up.add_mutually_exclusive_group()
     up_sel.add_argument("--alle-offenen", action="store_true", help="Alle geprüften sofort hochladen")
     up_sel.add_argument("--faellige", action="store_true", help="Freigegebene, deren Slot erreicht ist")
+
+    cl = sub.add_parser("clips", help="Kurzclips aus langen Videos schneiden (Clipping)")
+    cl.add_argument("aktion", choices=["auto", "analysieren", "auswaehlen", "schneiden"])
+    cl.add_argument("quelle", help="Link/Datei (auto, analysieren) oder Arbeitsordner (auswaehlen, schneiden)")
+    cl.add_argument("--nische", default="clips")
+    cl.add_argument("--anzahl", type=int, default=5)
 
     rm = sub.add_parser("verwerfen", help="Schlechtes Video löschen (Serie macht dann an derselben Stelle weiter)")
     rm.add_argument("ordner", nargs="+", type=Path)
@@ -133,6 +145,30 @@ def main() -> None:
             except Exception as e:
                 failed = True
                 print(f"FEHLER bei {folder}: {e}", file=sys.stderr)
+
+    elif args.cmd == "clips":
+        from . import clips
+        niche = pipeline.load_niches()[args.nische]
+        if niche.get("mode") != "clip":
+            parser.error(f"Kanal '{args.nische}' hat nicht mode: clip")
+        if args.aktion == "auto":
+            folders = clips.auto(args.quelle, args.nische, args.anzahl)
+        elif args.aktion == "analysieren":
+            work = clips.prepare(args.quelle, args.nische)
+            lang = niche.get("language") if len(niche.get("language", "")) == 2 else None
+            clips.transcribe(work, lang, niche.get("whisper_model", "small"))
+            print(f"Arbeitsordner: {work}\nTranskript: {work / 'transkript.txt'}")
+            folders = []
+        elif args.aktion == "auswaehlen":
+            clips.select(Path(args.quelle), args.nische, args.anzahl)
+            print(f"Auswahl gespeichert: {Path(args.quelle) / 'auswahl.json'}")
+            folders = []
+        else:
+            folders = clips.cut(Path(args.quelle), args.nische)
+        for folder in folders:
+            print(folder / "video.mp4")
+        if folders:
+            print("Jetzt prüfen, dann: python -m ki_videos freigeben --alle-offenen")
 
     elif args.cmd == "verwerfen":
         for folder in args.ordner:

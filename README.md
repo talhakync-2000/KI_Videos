@@ -91,6 +91,37 @@ Schlägt eine einzelne Plattform fehl, zeigt `plan` das an, und `hochladen <ordn
 
 So brauchst du keinen Anthropic-API-Key: Claude Code schreibt die Skripte selbst.
 
+## Clip-Modus (Clipping)
+
+Schneidet aus langen Videos (Streams, Podcasts) automatisch Kurzclips im 9:16-Format: mit Untertiteln, wahlweise mit Gameplay im unteren Bildschirmteil.
+
+> **Nur mit Material, das du nutzen darfst.** Fremde Clips ohne Erlaubnis sind eine Urheberrechtsverletzung und bringen auf TikTok und YouTube kein Geld (Regeln gegen nicht originale bzw. wiederverwendete Inhalte). Der legale Weg sind **Clipping-Kampagnen**, z. B. Whop „Content Rewards“ oder Ssemble. Dort bezahlen Streamer und Marken pro 1.000 Views (Median ca. 1 $), **ohne Follower-Hürde**.
+
+```powershell
+.venv\Scripts\python -m ki_videos clips auto "<Kampagnen-Link oder Datei>" --anzahl 5
+```
+Das macht in einem Schritt:
+1. Video laden (yt-dlp)
+2. Spracherkennung mit Wort-Zeitstempeln (faster-whisper, läuft lokal und kostet nichts)
+3. die besten Momente auswählen: mit `ANTHROPIC_API_KEY` durch Claude, sonst über eine einfache Heuristik. Besser: in Claude Code den Skill `/clip-auswahl` nutzen.
+4. Schnitt, Untertitel und Gameplay
+5. Die Clips landen zur Prüfung in `output/clips/`, dann wie gewohnt `freigeben`.
+
+Einzelschritte: `clips analysieren <quelle>`, `clips auswaehlen <arbeitsordner>`, `clips schneiden <arbeitsordner>` (die Auswahl kann vorher in `auswahl.json` angepasst werden).
+
+**Einstellungen** in `config/niches.yaml` unter `clips`:
+- `layout`: `split` mit Gameplay oder `full`
+- `clip_min` / `clip_max`
+- `campaign_rules`: Regeln der Kampagne, Claude hält sich daran
+- `credit`: Quellenangabe in der Beschreibung
+- `whisper_model`
+
+Für mehrere Kampagnen legst du den Block mehrfach an, z. B. `clips_streamer1`. Aufruf dann mit `--nische clips_streamer1`.
+
+**Gameplay-Material** kommt nach `assets/gameplay/` (MP4). Nimm am besten **selbst aufgenommenes Gameplay**, z. B. Minecraft-Parkour. Fremde Gameplay-Videos von YouTube sind ebenfalls urheberrechtlich geschützt. Die Pipeline wählt pro Clip zufällig eine Datei und einen zufälligen Startpunkt.
+
+Die Spracherkennung läuft auf der CPU etwa in Echtzeit. Für ein 1-Stunden-Video kannst du `whisper_model: base` nehmen, das geht schneller, ist aber ungenauer.
+
 ## Kosten pro Video (grob)
 
 | Kanal | ca. pro Video |

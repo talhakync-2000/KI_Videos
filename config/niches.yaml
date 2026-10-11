@@ -129,3 +129,26 @@ niches:
     hashtags: ["#sagenhaft", "#mythologie", "#odysseus", "#griechischemythologie", "#fyp"]
     timezone: Europe/Berlin
     posting_times: ["18:00"]
+
+  # Clip-Modus: Kurzclips aus langen Videos (nur Material mit Erlaubnis, z. B. Clipping-Kampagnen
+  # auf Whop "Content Rewards" oder Ssemble). Pro Kampagne am besten ein eigener Block mit den Regeln.
+  clips:
+    brand: Clips
+    mode: clip
+    language: de            # Sprache des Quellvideos (für die Spracherkennung), z. B. de oder en
+    whisper_model: small     # tiny/base/small/medium: größer = genauer, aber langsamer
+    clip_min: 20
+    clip_max: 60
+    layout: split            # split = Gameplay unten (Videos aus gameplay_dir), full = nur das Video
+    gameplay_dir: assets/gameplay
+    subtitle_color: "#FFE600"
+    campaign_rules: >
+      Hier die Regeln der Kampagne eintragen (Pflicht-Hashtags, Verlinkung, verbotene Inhalte,
+      Mindestlänge usw.). Claude hält sich bei der Auswahl daran.
+    credit: ""               # z. B. "🎥 Ganzer Stream: twitch.tv/name" (oft Pflicht in Kampagnen)
+    upload_profile: clips
+    platforms: [tiktok, instagram, youtube]
+    hashtags: ["#clips", "#fyp"]
+    youtube_category: 24
+    timezone: Europe/Berlin
+    posting_times: ["12:00", "17:00", "21:00"]

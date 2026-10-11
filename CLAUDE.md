@@ -8,6 +8,7 @@ Definiert in `config/niches.yaml`, Branding in `branding/BRANDING.md`, Prioritä
 - `sagenhaft` (Start): Mythen-Serie, deutsch, Bilder + Stimme, 60–70 s
 - `saftladen` (später): Früchte-Reality-Soap, deutsch, Serie, KI-Videoclips (Veo 3) mit Dialog
 - `slicelab` (pausiert, `active: false`): KI-ASMR ohne Sprache
+- `clips` (`mode: clip`): Clipping aus langen Videos, nur Material mit Erlaubnis (Kampagnen), siehe Skill `clip-auswahl`
 
 Bilder-Modus-Videos müssen mindestens 60 s lang sein (TikTok Creator Rewards). Kapitalverbrechen: nur belegte Fakten, keine Anlageberatung, keine Gesichter echter Personen.
 
@@ -20,6 +21,7 @@ Bilder-Modus-Videos müssen mindestens 60 s lang sein (TikTok Creator Rewards). 
 ## Arbeitsabläufe
 - Trend-Videos analysieren: Skill `trend-analyse` (nutzt das Watch-Plugin aus dem Repo claude-video-watch)
 - Tägliche Produktion: Skill `tagesproduktion`
+- Clips aus Streams/Podcasts: `python -m ki_videos clips auto <quelle>` oder Skill `clip-auswahl`
 
 ## Regeln
 - Skript-Format und Inhaltsregeln: `ki_videos/script.py` (`SCHEMA`, `BASE_RULES`, `MODE_RULES`). Fertige Skripte liegen in `content/<nische>/`.

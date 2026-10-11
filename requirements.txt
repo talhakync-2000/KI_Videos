@@ -3,3 +3,5 @@ requests>=2.31
 pyyaml>=6.0
 python-dotenv>=1.0
 tzdata>=2024.1  # Zeitzonen unter Windows
+faster-whisper>=1.1  # Clip-Modus: Spracherkennung
+yt-dlp>=2025.1      # Clip-Modus: Videos laden

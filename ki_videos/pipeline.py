@@ -20,7 +20,9 @@ def load_niches() -> dict:
 
 
 def active_niches() -> list[str]:
-    return [name for name, n in load_niches().items() if n.get("active", True)]
+    """Aktive Kanäle, die aus Skripten erzeugt werden (Clip-Kanäle laufen über `clips`)."""
+    return [name for name, n in load_niches().items()
+            if n.get("active", True) and n.get("mode") != "clip"]
 
 
 def _slug(text: str) -> str:

@@ -6,3 +6,8 @@ __pycache__/
 
 # Trend-Videos zum Analysieren
 trends/videos/
+
+# Clip-Modus: Arbeitsordner und eigenes Gameplay-Material
+work/
+assets/gameplay/*
+!assets/gameplay/.gitkeep
