@@ -1,127 +1,101 @@
-# KI-Videos: automatische Pipeline für mehrere Nischen
+# KI-Videos: automatische Pipeline für drei Kanäle
 
-Erzeugt Kurzvideos (9:16) komplett automatisch und lädt sie auf TikTok, Instagram, Facebook und YouTube hoch:
+Erzeugt Kurzvideos (9:16), plant sie auf die besten Posting-Zeiten und lädt sie automatisch auf TikTok, Instagram, Facebook und YouTube hoch.
 
 ```
-Claude (Skript, Szenen-Prompts, Titel, Hashtags, bei Serien: nächste Folge)
+Skript (Claude Code schreibt nach content/  ODER  Anthropic-API)
   ├─ mode: bilder → fal.ai FLUX (Bild pro Szene) → ElevenLabs (Stimme) → FFmpeg (Zoom + Untertitel)
   └─ mode: video  → fal.ai Veo 3 (8-Sek.-Clips mit Ton/Dialog) → FFmpeg (zusammenschneiden)
-  → Ordner zur Prüfung
-  → Upload-Post (alle Plattformen der jeweiligen Nische)
+  → Prüfung (du oder Claude mit dem Watch-Plugin)
+  → freigeben: nächster Posting-Slot der Nische
+  → Windows-Aufgabe lädt zur geplanten Zeit über Upload-Post hoch
 ```
 
-## Die drei Nischen (`config/niches.yaml`)
+## Die drei Kanäle
 
-| Nische | Modus | Serie | Idee |
-|---|---|---|---|
-| `fruechte_drama` | video | ✅ | Obst-Soap mit festen Figuren (Erdbeere Emma, Banane Bernd …), jede Folge mit Cliffhanger |
-| `ki_asmr` | video | – | Messer schneidet Glasfrüchte, Kristalle, Lava … ohne Sprache, funktioniert weltweit |
-| `mythen_serie` | bilder | ✅ | Griechische, nordische und ägyptische Sagen als Fortsetzungsgeschichte (gemeinfrei, kein Urheberrecht-Problem) |
+| Kanal | Nische | Modus | Serie | Posting |
+|---|---|---|---|---|
+| **Saftladen** 🍓 (`saftladen`) | Früchte-Reality-Soap, deutsch | video | ✅ | täglich 19:00 |
+| **SliceLab** 🔪 (`slicelab`) | KI-ASMR, international | video | – | 19:00 + 01:00 |
+| **Sagenhaft** ⚡ (`sagenhaft`) | Mythen als Serie, deutsch | bilder | ✅ | täglich 18:00 |
 
-**Serien:** Die Pipeline merkt sich in `output/<nische>/history.json` eine Zusammenfassung jeder Folge. Claude schreibt die nächste Folge passend weiter. Ist eine Folge schlecht, löschst du sie mit `verwerfen`. Die nächste Folge wird dann an derselben Stelle neu geschrieben.
+- **Branding zum Kopieren** (Namen, Handles, Bios, Profilbild- und Banner-Prompts, Checkliste): [branding/BRANDING.md](branding/BRANDING.md)
+- **Start-Content:** 3 Saftladen-Folgen, 5 SliceLab-Videos, 3 Sagenhaft-Folgen als fertige Skripte in `content/`
+- **Allgemeine Anleitung und Trends:** [ANLEITUNG.md](ANLEITUNG.md)
 
-**Feste Figuren:** Unter `characters` beschreibst du das Aussehen jeder Figur auf Englisch. Diese Beschreibung kommt in jeden Clip-Prompt, damit die Figuren in allen Folgen gleich aussehen.
+## Einrichtung (Windows)
 
-Die Schritt-für-Schritt-Anleitung und die Trends stehen in [ANLEITUNG.md](ANLEITUNG.md).
-
-## Einrichtung
-
-1. Python 3.10+ und FFmpeg installieren (`brew install ffmpeg`, `sudo apt install ffmpeg` oder ffmpeg.org).
-2. Pakete installieren:
-   ```bash
-   python -m venv .venv && source .venv/bin/activate
-   pip install -r requirements.txt
+1. Repo herunterladen, im Ordner PowerShell öffnen:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File setup\install.ps1
    ```
-3. API-Keys besorgen und in `.env` eintragen (Vorlage: `.env.example`):
-   | Key | Woher | Wofür |
-   |---|---|---|
-   | `ANTHROPIC_API_KEY` | console.anthropic.com | Skripte |
-   | `FAL_KEY` | fal.ai | Bilder |
-   | `ELEVENLABS_API_KEY` | elevenlabs.io | Stimme |
-   | `UPLOAD_POST_API_KEY` | upload-post.com | Upload |
-4. In `config/niches.yaml` bei Nischen mit `mode: bilder` eine `voice_id` aus ElevenLabs eintragen (Voice Library, „ID kopieren“). Video-Nischen brauchen keine, weil der Ton aus dem Videomodell kommt.
+   Das Skript installiert Python und FFmpeg (per winget), legt `.venv` an und installiert die Pakete. Wenn es neue Programme installiert hat, Terminal neu öffnen und das Skript nochmal starten.
+2. API-Keys in `.env` eintragen (`notepad .env`):
+   | Key | Woher | Wofür | Nötig? |
+   |---|---|---|---|
+   | `FAL_KEY` | fal.ai | Bilder und Videoclips | ja |
+   | `ELEVENLABS_API_KEY` | elevenlabs.io | Stimme (Sagenhaft) | ja |
+   | `UPLOAD_POST_API_KEY` | upload-post.com | Upload | ja |
+   | `ANTHROPIC_API_KEY` | console.anthropic.com | Skripte ohne Claude Code | nein, wenn Claude Code die Skripte schreibt |
+3. In `config/niches.yaml` bei `sagenhaft` eine `voice_id` aus ElevenLabs eintragen (Voice Library, tiefe Erzählerstimme).
+4. Automatische Uploads einschalten:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File setup\upload-job.ps1
+   ```
+5. Für Trend-Analyse und Qualitätskontrolle: das Watch-Plugin aus dem Repo `claude-video-watch` einrichten (dort `install-deps.ps1`).
 
-## Mehrere Nischen und Accounts
-
-**Ja, ein eigener Account-Satz pro Nische ist sinnvoll.** Der Algorithmus zeigt einem Account nur dann neue Zuschauer, wenn klar ist, worum es geht. Gemischte Themen auf einem Account bremsen das Wachstum.
-
-Du brauchst **einen Account pro Plattform pro Nische**. Bei 3 Nischen und 5 Plattformen sind das bis zu 15. Der Aufwand ist kleiner, als es klingt:
-- **YouTube:** ein Google-Konto, darunter mehrere Kanäle (Brand-Accounts)
-- **Facebook:** ein privates Profil, darunter eine Seite pro Nische
-- **Instagram:** bis zu 5 Accounts in einer App, jeder mit der passenden Facebook-Seite verknüpft
-- **TikTok:** mehrere Accounts in einer App, jeder mit eigener E-Mail
-- **Snapchat:** ein öffentliches Profil pro Nische
-
-Am Anfang reichen **TikTok, Instagram und YouTube** (9 Accounts).
-
-So richtest du es ein:
-1. Pro Nische eigene Accounts auf den gewählten Plattformen anlegen.
-2. Bei **Upload-Post** pro Nische ein **Profil** anlegen (z. B. `tierfakten`) und dort nur die Accounts dieser Nische verbinden.
-3. In `config/niches.yaml` einen Block pro Nische eintragen. `upload_profile` muss genau wie das Upload-Post-Profil heißen.
-
-Neue Nische = neuer Block in der YAML-Datei. Am Code musst du nichts ändern.
-
-**Tipps:**
-- Fang mit **2–3 Nischen** an und erweitere erst, wenn eine läuft. Jede Nische braucht Pflege (Kommentare, Auswertung).
-- Accounts **nicht direkt** mit vielen Uploads pro Tag starten. In den ersten Tagen 1 Video pro Tag, dann steigern.
-- Jede Nische braucht einen eigenen Stil (Stimme, Bildstil). Dann wirken die Accounts nicht wie Massenware.
-- TikTok und Instagram erlauben mehrere Accounts pro Person. Verboten ist es aber, Accounts zu nutzen, um gegenseitig Reichweite zu pushen (Likes oder Kommentare zwischen den eigenen Accounts).
+Auf Mac/Linux: Python 3.10+ und FFmpeg installieren, `python -m venv .venv`, `pip install -r requirements.txt`, statt der Windows-Aufgabe ein Cronjob `*/15 * * * * cd /pfad && .venv/bin/python -m ki_videos hochladen --faellige`.
 
 ## Benutzung
 
-```bash
-python -m ki_videos nischen                                  # konfigurierte Nischen anzeigen
-python -m ki_videos erstellen --nische tier_fakten           # ein Video erstellen
-python -m ki_videos erstellen --nische tier_fakten --thema "Oktopus hat drei Herzen" --anzahl 3
-python -m ki_videos erstellen --alle                         # ein Video pro Nische
-python -m ki_videos offen                                    # was wartet auf Prüfung?
-python -m ki_videos hochladen output/tier_fakten/2026...     # ein geprüftes Video hochladen
-python -m ki_videos hochladen --alle-offenen                 # alle geprüften hochladen
-python -m ki_videos verwerfen output/fruechte_drama/2026...  # schlechtes Video löschen
+```powershell
+$py = ".venv\Scripts\python"
+& $py -m ki_videos nischen                                   # Kanäle, Modi, Posting-Slots
+& $py -m ki_videos erstellen --nische saftladen --skript content\saftladen\folge-01.json content\saftladen\folge-02.json
+& $py -m ki_videos erstellen --nische sagenhaft --thema "Thor und der Riese"   # Skript per Anthropic-API
+& $py -m ki_videos offen                                     # wartet auf Prüfung
+& $py -m ki_videos freigeben --alle-offenen                  # auf die nächsten freien Slots legen
+& $py -m ki_videos plan                                      # was geht wann online?
+& $py -m ki_videos verwerfen output\saftladen\2026...        # schlechtes Video löschen
+& $py -m ki_videos hochladen output\slicelab\2026...         # sofort hochladen, ohne Slot
 ```
 
-Jedes Video bekommt einen eigenen Ordner unter `output/<nische>/` mit `video.mp4`, `script.json`, den Bildern und `meta.json` (Titel, Beschreibung, Status). Bereits behandelte Themen merkt sich die Pipeline in `output/<nische>/history.json`, damit sich Themen nicht wiederholen.
+Jedes Video bekommt einen Ordner unter `output/<nische>/` mit `video.mp4`, `script.json` und `meta.json` (Upload-Paket: Titel, Beschreibung, Hashtags, Status, geplante Zeit). Der Status läuft `review` → `scheduled` → `uploaded`.
 
-**Prüfen vor dem Upload (empfohlen):** Standardmäßig wird nur erstellt. Sieh dir das Video kurz an, lösche den Ordner, wenn es nicht gut ist, und lade es sonst mit `hochladen` hoch. Mit `--hochladen` geht es ohne Prüfung direkt raus. Das ist erst sinnvoll, wenn die Qualität zuverlässig stimmt.
+**Serien:** `output/<nische>/history.json` speichert eine Zusammenfassung jeder Folge, die nächste Folge knüpft daran an. Eine verworfene Folge wird aus der Historie gelöscht. Serien-Folgen immer in der richtigen Reihenfolge rendern und freigeben.
 
-**Hintergrundmusik:** In der Nische `music: musik/meine_datei.mp3` eintragen (nur lizenzfreie Musik). Die Musik wird leise unter die Stimme gemischt.
+**Feste Figuren:** Unter `characters` steht das Aussehen jeder Figur auf Englisch. Es kommt wörtlich in jeden Prompt, damit die Figuren gleich aussehen.
 
-## Vollautomatisch per Zeitplan
+**Upload-Zeiten:** `posting_times` pro Kanal in `config/niches.yaml`. Ist der PC zur Posting-Zeit aus, wird das Video beim nächsten Lauf der Aufgabe nachgeholt.
 
-Ein Cronjob auf einem Server oder Raspberry Pi erstellt zum Beispiel jeden Morgen um 7 Uhr ein Video pro Nische:
-```cron
-0 7 * * * cd /pfad/zu/KI_Videos && .venv/bin/python -m ki_videos erstellen --alle >> log.txt 2>&1
-```
-Mittags prüfst du kurz und lädst hoch (`hochladen --alle-offenen`). Wenn du der Qualität vertraust, hängst du stattdessen `--hochladen` an.
+## Mit Claude Code arbeiten (ViralAI Manager)
+
+Öffne Claude Code im Ordner `KI_Videos`. Die `CLAUDE.md` erklärt Claude das Projekt, dazu gibt es zwei Skills:
+- **`/trend-analyse <Link>`**: Claude sieht sich ein virales Video mit dem Watch-Plugin an, erklärt, warum es viral geht, speichert die Analyse in `trends/` und schreibt passende neue Skripte nach `content/`.
+- **`/tagesproduktion`**: Claude füllt die nächsten 3 Tage pro Kanal auf. Es schreibt Skripte, rendert, prüft jedes Video mit dem Watch-Plugin und gibt die guten frei.
+
+So brauchst du keinen Anthropic-API-Key: Claude Code schreibt die Skripte selbst.
 
 ## Kosten pro Video (grob)
 
-| Dienst | ca. |
+| Kanal | ca. pro Video |
 |---|---|
-| Claude (Skript) | 1–3 Cent |
-| **Bilder-Modus:** FLUX dev, 5–6 Bilder | 15–25 Cent |
-| **Bilder-Modus:** ElevenLabs, ~40 Sek. Stimme | im Abo enthalten (Starter ~5 $/Monat reicht für ca. 30–60 Videos) |
-| **Video-Modus:** Veo 3 fast, pro 8-Sek.-Clip | **ca. 1–3 $** (Früchte-Drama mit 4 Clips: ca. 4–12 $, ASMR mit 2 Clips: ca. 2–6 $) |
+| Saftladen (4 Veo-Clips) | 4–12 $ |
+| SliceLab (2 Veo-Clips) | 2–6 $ |
+| Sagenhaft (6 Bilder + Stimme) | unter 0,50 $ + ElevenLabs-Abo (~5 $/Monat) |
 | Upload-Post | Abo ab ca. 8 $/Monat |
 
-Der Video-Modus ist deutlich teurer. Günstigere Videomodelle auf fal.ai (z. B. Kling, Hailuo, Wan) trägst du pro Nische als `video_model` ein. Manche erzeugen aber keinen Ton.
-
-Die Preise ändern sich oft, prüf sie auf den Seiten der Anbieter.
+Video-Clips sind der große Kostenblock. Günstigere Videomodelle auf fal.ai (z. B. Kling, Hailuo, Wan) trägst du pro Kanal als `video_model` ein. Manche erzeugen aber keinen Ton. Die Preise ändern sich oft, prüf sie bei den Anbietern.
 
 ## Vor dem ersten echten Lauf prüfen
 
-Der Videoschnitt ist lokal getestet. Die externen APIs konnten beim Bauen nicht live aufgerufen werden. Gleiche deshalb einmal ab:
-- **Upload-Post** (`ki_videos/upload.py`): Endpunkt `api/upload`, Felder `user`, `platform[]`, `title`, `description`, `video`. Siehe docs.upload-post.com. Dort steht auch, ob es ein Feld für das **KI-Label** gibt. Sonst setzt du das Label einmalig in den App-Einstellungen bzw. pro Post.
-- **fal.ai** (`ki_videos/images.py`): Feld `image_size` mit `width`/`height` für Bilder. Für Videos die Felder `aspect_ratio`, `duration`, `generate_audio` und die Antwort `video.url`. Diese Felder unterscheiden sich je nach Videomodell.
+Der Videoschnitt, die Planung und der Upload-Ablauf sind mit Testdaten geprüft. Die externen APIs konnten beim Bauen nicht live aufgerufen werden. Gleiche deshalb einmal ab:
+- **Upload-Post** (`ki_videos/upload.py`): Endpunkt `api/upload`, Felder `user`, `platform[]`, `title`, `description`, `video`. Siehe docs.upload-post.com. Dort steht auch, ob es ein Feld für das KI-Label gibt.
+- **fal.ai** (`ki_videos/images.py`): Bilder mit `image_size` (`width`/`height`). Videos mit `aspect_ratio`, `duration`, `generate_audio`, Antwort `video.url`. Das unterscheidet sich je nach Videomodell.
 - **ElevenLabs** (`ki_videos/voice.py`): Endpunkt `with-timestamps`.
 
-Am besten zuerst mit einem Test-Profil bei Upload-Post und privaten Test-Accounts ausprobieren.
+Am besten zuerst ein einzelnes SliceLab-Video rendern (günstig, ohne Sprache) und mit einem Test-Profil bei Upload-Post hochladen.
 
 ## Snapchat
 
-Upload-Post unterstützt Snapchat nicht. Optionen: ShortSync oder Dash Social (Spotlight-API), oder die fertige `video.mp4` manuell in Snapchat hochladen.
-
-## Erweiterungsideen
-
-- Figuren noch konsistenter machen: zuerst ein Referenzbild pro Figur erzeugen und Bild-zu-Video statt Text-zu-Video nutzen.
-- Statistiken: Views pro Video abrufen und Claude bei neuen Themen die Bestseller mitgeben.
+Upload-Post unterstützt Snapchat nicht. Optionen: ShortSync oder Dash Social (Spotlight-API), oder die fertige `video.mp4` manuell hochladen.

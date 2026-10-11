@@ -6,63 +6,87 @@
 # mode: video   -> echte KI-Videoclips mit Ton/Dialog vom Videomodell (teurer)
 # series: true  -> jede Folge knüpft an die vorherige an (Cliffhanger, "Folge N")
 # characters    -> feste Figuren, deren Aussehen in jeden Prompt übernommen wird
+# posting_times -> Upload-Slots (Uhrzeit in "timezone"); "freigeben" verteilt Videos darauf
+#
+# Branding (Namen, Bios, Profilbilder) steht in branding/BRANDING.md.
 
 niches:
-  fruechte_drama:
+  saftladen:
+    brand: Saftladen
     mode: video
     series: true
     language: de
     topic: >
-      Seifenoper mit Obst- und Gemüse-Figuren in einer Obstschalen-WG. Eifersucht, Intrigen,
-      Geheimnisse, peinliche Momente. Lustig und überdreht, aber nichts Sexuelles.
-    tone: dramatisch-übertrieben wie eine Reality-Soap, mit Humor
+      "Saftladen" ist eine Reality-Soap in einer Obstschale auf der Küchentheke einer WG.
+      Die Früchte flirten, lästern, intrigieren und bilden Paare. Am Ende jeder Woche
+      entscheidet die Schale, wer rausfliegt, und wer rausfliegt, landet im Mixer (Smoothie).
+      Running Gags: der Mixer als Drohung ("Pass auf, sonst Smoothie!"), Zitrone Zoe verbreitet
+      jedes Gerücht, Banane Bernd wird langsam braun und hat Angst davor.
+      Lustig und überdreht. Nichts Sexuelles, keine echte Gewalt, kein Ekel.
+    tone: dramatisch-übertrieben wie eine Reality-Soap, schnelle Dialoge, viel Humor
     style: >
       3D animated, Pixar-like, glossy fruit characters with expressive faces, big eyes and tiny
-      arms, warm kitchen lighting, shallow depth of field, cinematic close-ups
+      arms, sitting in a white ceramic fruit bowl on a sunny kitchen counter, warm lighting,
+      shallow depth of field, cinematic close-ups, reality-TV camera feel
     characters:
       - name: Erdbeere Emma
-        look: a glossy red strawberry with green leaf hair, big blue eyes, pink lipstick
+        look: a glossy red strawberry girl with green leaf hair, big blue eyes, pink lipstick
       - name: Banane Bernd
-        look: a tall yellow banana with brown freckles, sunglasses on his head, gold chain
+        look: a tall yellow banana guy with a few brown freckles, sunglasses on his head, gold chain
       - name: Aubergine Alex
-        look: a purple eggplant with a slick green stem hairstyle, smug smile, leather jacket
+        look: a purple eggplant guy with a slick green stem quiff, smug smile, tiny leather jacket
       - name: Zitrone Zoe
-        look: a small bright yellow lemon with sour expression, round glasses, gossip queen
+        look: a small bright yellow lemon girl with round glasses and a sour, curious expression
+      - name: Kiwi Kim
+        look: a fuzzy brown kiwi girl, cut open on top showing bright green flesh like a hairdo, shy smile
     scenes: 4
-    upload_profile: fruechte
+    upload_profile: saftladen
     platforms: [tiktok, instagram, facebook, youtube]
-    hashtags: ["#fruechtedrama", "#kidrama", "#fruitlove", "#serie"]
+    hashtags: ["#saftladen", "#obstdrama", "#kidrama", "#fruitloveisland", "#fyp"]
+    timezone: Europe/Berlin
+    posting_times: ["19:00"]
 
-  ki_asmr:
+  slicelab:
+    brand: SliceLab
     mode: video
-    language: keine Sprache, nur Geräusche
+    language: none (no speech, only sounds; title and captions in English)
     topic: >
-      Oddly satisfying ASMR: scharfe Messer schneiden durch ungewöhnliche Materialien
-      (Glasfrüchte, Kristalle, Lava, Seife, Gelee, Eis, Edelsteine), Nahaufnahmen, Schichten
-      im Inneren. Jedes Video ein neues Objekt-Material-Paar.
-    tone: ruhig, hypnotisch, befriedigend
+      Oddly satisfying ASMR: a razor-sharp knife slowly slices through unusual materials
+      (glass fruits, crystals, lava, soap, jelly, ice, gemstones, chocolate, honeycomb glass),
+      macro close-ups, revealing surprising layers inside. Every video a new object-material pair.
+    tone: calm, hypnotic, satisfying
     style: >
-      macro close-up, studio lighting, black background, ultra realistic, 4k, slow motion,
-      crisp detailed ASMR cutting sounds, no music, no voice
+      macro close-up, studio lighting, pure black background, ultra realistic, 4k, slow motion,
+      crisp detailed ASMR cutting and crackling sounds, no music, no voice
     scenes: 2
-    upload_profile: asmr
+    upload_profile: slicelab
     platforms: [tiktok, instagram, facebook, youtube]
-    hashtags: ["#asmr", "#satisfying", "#oddlysatisfying", "#aiasmr"]
+    hashtags: ["#asmr", "#oddlysatisfying", "#satisfying", "#aiasmr", "#fyp"]
+    # 19:00 Berlin = Abend in Europa / Mittag in den USA, 01:00 Berlin = Abend an der US-Ostküste
+    timezone: Europe/Berlin
+    posting_times: ["19:00", "01:00"]
 
-  mythen_serie:
+  sagenhaft:
+    brand: Sagenhaft
     mode: bilder
     series: true
     language: de
     topic: >
-      Griechische, nordische und ägyptische Mythen als spannende Fortsetzungsgeschichte erzählt
-      (z. B. die Irrfahrt des Odysseus über viele Folgen, danach die nächste Sage).
-      Nur gemeinfreie Sagen, nah an der Überlieferung.
-    tone: episch, spannend, wie ein Hörspiel-Erzähler
+      "Sagenhaft" erzählt griechische, nordische und ägyptische Mythen als spannende
+      Fortsetzungsgeschichte in 60-Sekunden-Folgen. Staffel 1: die Irrfahrt des Odysseus,
+      danach die nächste große Sage. Nur gemeinfreie Überlieferung, nah am Original,
+      aber erzählt wie ein Thriller.
+    tone: episch, spannend, wie ein Hörspiel-Erzähler, kurze Sätze
     style: >
-      epic fantasy painting, dramatic lighting, cinematic composition, ancient world,
-      highly detailed, rich colors
+      epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition,
+      ancient mediterranean world, highly detailed, rich deep colors
+    characters:
+      - name: Odysseus
+        look: Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak
     voice_id: "HIER_ELEVENLABS_VOICE_ID"
     scenes: 6
-    upload_profile: mythen
+    upload_profile: sagenhaft
     platforms: [tiktok, instagram, facebook, youtube]
-    hashtags: ["#mythologie", "#sagen", "#geschichte", "#serie"]
+    hashtags: ["#sagenhaft", "#mythologie", "#odysseus", "#griechischemythologie", "#fyp"]
+    timezone: Europe/Berlin
+    posting_times: ["18:00"]

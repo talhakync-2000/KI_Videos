@@ -6,8 +6,8 @@ W, H, FPS = 1080, 1920, 30
 WORDS_PER_SUBTITLE = 3
 
 
-def _run(cmd: list[str]) -> None:
-    subprocess.run(cmd, check=True, capture_output=True)
+def _run(cmd: list[str], cwd: Path | None = None) -> None:
+    subprocess.run(cmd, check=True, capture_output=True, cwd=cwd)
 
 
 def audio_duration(path: Path) -> float:
@@ -57,7 +57,7 @@ PlayResY: {H}
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,DejaVu Sans,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,620,1
+Style: Default,Arial,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,620,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -91,12 +91,14 @@ def render_video(
         clips.append(clip)
 
     concat_list = work / "clips.txt"
-    concat_list.write_text("".join(f"file '{c.resolve()}'\n" for c in clips))
+    concat_list.write_text("".join(f"file '{c.resolve().as_posix()}'\n" for c in clips), encoding="utf-8")
 
-    cmd = ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list), "-i", str(voice)]
-    sub_filter = f"subtitles='{subtitles.resolve()}'"
+    cmd = ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list.resolve()), "-i", str(voice.resolve())]
+    # Nur der Dateiname, FFmpeg läuft im Ordner der Untertitel: Windows-Pfade wie C:\...
+    # würden im Filter-Ausdruck sonst als Optionen gelesen.
+    sub_filter = f"subtitles={subtitles.name}"
     if music:
-        cmd += ["-stream_loop", "-1", "-i", str(music)]
+        cmd += ["-stream_loop", "-1", "-i", str(music.resolve())]
         cmd += [
             "-filter_complex",
             f"[0:v]{sub_filter}[v];[2:a]volume=0.12[m];"
@@ -107,9 +109,9 @@ def render_video(
         cmd += ["-vf", sub_filter, "-map", "0:v", "-map", "1:a"]
     cmd += [
         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
-        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", str(out),
+        "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", "-shortest", str(out.resolve()),
     ]
-    _run(cmd)
+    _run(cmd, cwd=subtitles.parent)
     return out
 
 
@@ -143,7 +145,7 @@ def concat_clips(clips: list[Path], out: Path, music: Path | None = None) -> Pat
         normalized.append(norm)
 
     concat_list = work / "clips.txt"
-    concat_list.write_text("".join(f"file '{c.resolve()}'\n" for c in normalized))
+    concat_list.write_text("".join(f"file '{c.resolve().as_posix()}'\n" for c in normalized), encoding="utf-8")
 
     cmd = ["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(concat_list)]
     if music:

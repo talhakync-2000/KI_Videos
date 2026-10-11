@@ -38,7 +38,9 @@ Allgemeine Regeln:
 - Die ersten 1-2 Sekunden müssen sofort fesseln. Keine Begrüßung, kein Intro.
 - Keine echten, lebenden Personen und keine geschützten Figuren aus Filmen, Serien oder Marken.
 - Nichts Sexuelles, keine Gewaltverherrlichung, nichts gegen Gruppen von Menschen.
-- visual_prompt immer auf Englisch, Hochformat 9:16, kein Text oder Schrift im Bild."""
+- visual_prompt immer auf Englisch, Hochformat 9:16, kein Text oder Schrift im Bild.
+- Wenn feste Figuren vorgegeben sind, übernimm ihre Aussehen-Beschreibung WÖRTLICH in jeden
+  visual_prompt, in dem sie vorkommen, damit sie in allen Szenen und Folgen gleich aussehen."""
 
 MODE_RULES = {
     "bilder": """Format: Standbilder mit Erzählstimme.
@@ -52,8 +54,7 @@ MODE_RULES = {
   und unter "Audio:" die Geräusche und, falls jemand spricht, die exakten Dialogzeilen in der
   Zielsprache mit Angabe, wer sie sagt (maximal 1-2 kurze Sätze pro Clip).
 - Jeder Clip ist für sich verständlich, weil die Clips hart hintereinander geschnitten werden.
-- Wenn Figuren vorgegeben sind, übernimm ihre Aussehen-Beschreibung in JEDEN visual_prompt wörtlich,
-  damit sie in allen Clips gleich aussehen.""",
+- Clip 1 ist der Hook: Schock, Geheimnis oder Streit sofort in der ersten Sekunde.""",
 }
 
 
