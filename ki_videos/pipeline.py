@@ -19,6 +19,10 @@ def load_niches() -> dict:
     return yaml.safe_load(CONFIG.read_text(encoding="utf-8"))["niches"]
 
 
+def active_niches() -> list[str]:
+    return [name for name, n in load_niches().items() if n.get("active", True)]
+
+
 def _slug(text: str) -> str:
     text = text.lower()
     for a, b in (("ä", "ae"), ("ö", "oe"), ("ü", "ue"), ("ß", "ss")):
@@ -65,7 +69,7 @@ def _build_from_images(niche: dict, name: str, scenes: list[dict], folder: Path,
     total = render.audio_duration(voice_path)
     durations = render.scene_durations(scene_texts, alignment, total)
     subs = folder / "subtitles.ass"
-    render.write_subtitles(voice.words_from_alignment(alignment), subs)
+    render.write_subtitles(voice.words_from_alignment(alignment), subs, niche.get("subtitle_color", "#FFFFFF"))
     return render.render_video(image_paths, durations, voice_path, subs, folder / "video.mp4", music)
 
 

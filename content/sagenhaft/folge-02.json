@@ -6,14 +6,14 @@
     "#odyssee",
     "#polyphem"
   ],
-  "episode_summary": "Odysseus und zwölf Männer werden in der Höhle des Zyklopen Polyphem eingeschlossen, der einen riesigen Stein vor den Eingang rollt. Odysseus nennt sich Niemand, macht den Riesen mit Wein betrunken und blendet ihn mit einem glühenden Pfahl. Die Männer fliehen unter den Bäuchen der Schafe. Auf dem Schiff ruft Odysseus stolz seinen echten Namen, und Polyphem fleht seinen Vater Poseidon um Rache an.",
+  "episode_summary": "Odysseus will aus Neugier den Bewohner einer Höhle kennenlernen und wird mit zwölf Männern vom Zyklopen Polyphem eingeschlossen, der sechs von ihnen tötet. Odysseus nennt sich Niemand, macht den Riesen mit Wein betrunken und blendet ihn mit einem glühenden Pfahl. Die Männer fliehen unter den Bäuchen der Schafe. Auf dem Schiff ruft Odysseus stolz seinen echten Namen, und Polyphem fleht seinen Vater Poseidon um Rache an.",
   "scenes": [
     {
-      "narration": "Odysseus und zwölf Männer betreten die Höhle. Überall Käse, Milch, Schafe. Dann bebt der Boden.",
-      "visual_prompt": "Vertical 9:16 image. Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak and his men inside a huge torch-lit cave full of cheese wheels and sheep, looking up in fear as dust falls from the ceiling. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+      "narration": "Odysseus und zwölf Männer betreten die Höhle. Überall Käse, Milch, Schafe. Seine Männer wollen nur Vorräte nehmen und verschwinden. Doch Odysseus will den Bewohner kennenlernen. Ein tödlicher Fehler.",
+      "visual_prompt": "Vertical 9:16 image. Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak and his men inside a huge torch-lit cave full of cheese wheels and sheep, looking around curiously. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Polyphem. Ein Zyklop, so groß wie ein Haus. Er rollt einen Felsen vor den Eingang. Kein Ausweg.",
+      "narration": "Dann bebt der Boden. Polyphem. Ein Zyklop, so groß wie ein Haus. Er rollt einen Felsen vor den Eingang. Kein Ausweg. Sechs Männer überleben die nächsten Tage nicht.",
       "visual_prompt": "Vertical 9:16 image. A gigantic one-eyed cyclops shepherd rolls a massive boulder in front of the cave entrance, tiny men in the foreground. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
@@ -25,11 +25,15 @@
       "visual_prompt": "Vertical 9:16 image. Silhouettes of Greek men carrying a long glowing wooden stake towards a sleeping giant in the dark cave, sparks in the air. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Polyphem brüllt nach Hilfe. Wer tut dir weh? Niemand! Und die anderen Zyklopen lachen und gehen. Am Morgen fliehen die Männer, versteckt unter den Bäuchen der Schafe.",
+      "narration": "Polyphem brüllt nach Hilfe. Die anderen Zyklopen rufen: Wer tut dir weh? Und er schreit: Niemand! Da lachen sie und gehen.",
+      "visual_prompt": "Vertical 9:16 image. Other cyclops silhouettes standing outside the cave on a moonlit mountain, turning away, while a roar echoes from inside. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Am Morgen fliehen die Männer, versteckt unter den Bäuchen der Schafe, direkt an der tastenden Hand des Riesen vorbei.",
       "visual_prompt": "Vertical 9:16 image. Greek men clinging underneath large woolly sheep as they walk out of the cave past the blinded giant's hand. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Auf dem Schiff macht Odysseus einen fatalen Fehler. Er ruft seinen echten Namen. Und Polyphem betet zu seinem Vater. Poseidon. Gott des Meeres.",
+      "narration": "Doch auf dem Schiff macht Odysseus einen fatalen Fehler. Er ruft seinen echten Namen. Und Polyphem betet zu seinem Vater. Poseidon. Gott des Meeres. Von diesem Tag an ist das Meer selbst sein Feind.",
       "visual_prompt": "Vertical 9:16 image. Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak shouts triumphantly from his ship while the furious cyclops stands on a cliff, and a colossal face of Poseidon forms in the dark waves. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     }
   ]

@@ -1,4 +1,4 @@
-# KI-Videos: automatische Pipeline für drei Kanäle
+# KI-Videos: automatische Pipeline für mehrere Kanäle
 
 Erzeugt Kurzvideos (9:16), plant sie auf die besten Posting-Zeiten und lädt sie automatisch auf TikTok, Instagram, Facebook und YouTube hoch.
 
@@ -11,16 +11,21 @@ Skript (Claude Code schreibt nach content/  ODER  Anthropic-API)
   → Windows-Aufgabe lädt zur geplanten Zeit über Upload-Post hoch
 ```
 
-## Die drei Kanäle
+## Die Kanäle
 
-| Kanal | Nische | Modus | Serie | Posting |
-|---|---|---|---|---|
-| **Saftladen** 🍓 (`saftladen`) | Früchte-Reality-Soap, deutsch | video | ✅ | täglich 19:00 |
-| **SliceLab** 🔪 (`slicelab`) | KI-ASMR, international | video | – | 19:00 + 01:00 |
-| **Sagenhaft** ⚡ (`sagenhaft`) | Mythen als Serie, deutsch | bilder | ✅ | täglich 18:00 |
+Priorität laut [Marktanalyse](trends/2026-10-11-marktanalyse.md):
+
+| # | Kanal | Nische | Modus | Serie | Posting | Status |
+|---|---|---|---|---|---|---|
+| 1 | **Kapitalverbrechen** 💰 (`kapitalverbrechen`) | Wirtschafts-Krimis, deutsch | bilder | Akten | täglich 20:00 | **Start** |
+| 2 | **Sagenhaft** ⚡ (`sagenhaft`) | Mythen als Serie, deutsch | bilder | ✅ | täglich 18:00 | **Start** |
+| 3 | **Saftladen** 🍓 (`saftladen`) | Früchte-Reality-Soap, deutsch | video | ✅ | täglich 19:00 | später |
+| – | **SliceLab** 🔪 (`slicelab`) | KI-ASMR, international | video | – | 19:00 + 01:00 | pausiert |
+
+Videos im Bilder-Modus sind 60–80 Sekunden lang, weil TikTok Creator Rewards nur Videos ab 60 Sekunden bezahlt.
 
 - **Branding zum Kopieren** (Namen, Handles, Bios, Profilbild- und Banner-Prompts, Checkliste): [branding/BRANDING.md](branding/BRANDING.md)
-- **Start-Content:** 3 Saftladen-Folgen, 5 SliceLab-Videos, 3 Sagenhaft-Folgen als fertige Skripte in `content/`
+- **Start-Content:** 3 Kapitalverbrechen-Akten, 3 Sagenhaft-Folgen, 3 Saftladen-Folgen, 5 SliceLab-Videos als fertige Skripte in `content/`
 - **Allgemeine Anleitung und Trends:** [ANLEITUNG.md](ANLEITUNG.md)
 
 ## Einrichtung (Windows)
@@ -37,7 +42,7 @@ Skript (Claude Code schreibt nach content/  ODER  Anthropic-API)
    | `ELEVENLABS_API_KEY` | elevenlabs.io | Stimme (Sagenhaft) | ja |
    | `UPLOAD_POST_API_KEY` | upload-post.com | Upload | ja |
    | `ANTHROPIC_API_KEY` | console.anthropic.com | Skripte ohne Claude Code | nein, wenn Claude Code die Skripte schreibt |
-3. In `config/niches.yaml` bei `sagenhaft` eine `voice_id` aus ElevenLabs eintragen (Voice Library, tiefe Erzählerstimme).
+3. In `config/niches.yaml` bei `kapitalverbrechen` und `sagenhaft` je eine `voice_id` aus ElevenLabs eintragen (Voice Library). Kapitalverbrechen: ruhige, tiefe Podcast-Stimme. Sagenhaft: epischer Erzähler. Nimm zwei verschiedene Stimmen, damit die Kanäle unterscheidbar bleiben.
 4. Automatische Uploads einschalten:
    ```powershell
    powershell -ExecutionPolicy Bypass -File setup\upload-job.ps1
@@ -80,9 +85,11 @@ So brauchst du keinen Anthropic-API-Key: Claude Code schreibt die Skripte selbst
 
 | Kanal | ca. pro Video |
 |---|---|
-| Saftladen (4 Veo-Clips) | 4–12 $ |
+| Kapitalverbrechen (8 Bilder + Stimme) | unter 0,50 $ |
+| Sagenhaft (7 Bilder + Stimme) | unter 0,50 $ |
+| ElevenLabs für beide | Abo ca. 5–22 $/Monat, je nach Menge |
+| Saftladen (4 Veo-Clips, 32 s) | 4–12 $ |
 | SliceLab (2 Veo-Clips) | 2–6 $ |
-| Sagenhaft (6 Bilder + Stimme) | unter 0,50 $ + ElevenLabs-Abo (~5 $/Monat) |
 | Upload-Post | Abo ab ca. 8 $/Monat |
 
 Video-Clips sind der große Kostenblock. Günstigere Videomodelle auf fal.ai (z. B. Kling, Hailuo, Wan) trägst du pro Kanal als `video_model` ein. Manche erzeugen aber keinen Ton. Die Preise ändern sich oft, prüf sie bei den Anbietern.

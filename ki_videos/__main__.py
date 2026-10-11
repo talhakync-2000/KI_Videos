@@ -40,7 +40,7 @@ def main() -> None:
     gen = sub.add_parser("erstellen", help="Neue Videos erzeugen")
     target = gen.add_mutually_exclusive_group(required=True)
     target.add_argument("--nische")
-    target.add_argument("--alle", action="store_true", help="Für jede Nische ein Video")
+    target.add_argument("--alle", action="store_true", help="Für jeden aktiven Kanal ein Video")
     source = gen.add_mutually_exclusive_group()
     source.add_argument("--thema", help="Trend oder Thema vorgeben")
     source.add_argument("--skript", type=Path, nargs="+", help="Fertige Skript-JSON(s) rendern statt neu schreiben")
@@ -70,11 +70,13 @@ def main() -> None:
     if args.cmd == "nischen":
         for name, n in pipeline.load_niches().items():
             art = n.get("mode", "bilder") + (", Serie" if n.get("series") else "")
+            if not n.get("active", True):
+                art += ", pausiert"
             slots = ", ".join(n.get("posting_times", []))
-            print(f"{name:12} {art:15} Profil: {n['upload_profile']:10} Slots: {slots:14} {', '.join(n['platforms'])}")
+            print(f"{name:18} {art:18} Profil: {n['upload_profile']:10} Slots: {slots:14} {', '.join(n['platforms'])}")
 
     elif args.cmd == "erstellen":
-        names = list(pipeline.load_niches()) if args.alle else [args.nische]
+        names = pipeline.active_niches() if args.alle else [args.nische]
         jobs = [(name, None) for name in names for _ in range(args.anzahl)]
         if args.skript:
             if args.alle:

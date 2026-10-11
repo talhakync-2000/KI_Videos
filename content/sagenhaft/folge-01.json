@@ -6,7 +6,7 @@
     "#odyssee",
     "#troja"
   ],
-  "episode_summary": "Nach zehn Jahren Krieg fällt Troja durch die List des Odysseus mit dem hölzernen Pferd. Er will nach Hause nach Ithaka, doch ein Sturm treibt seine Schiffe ab. Auf der Insel der Lotophagen vergessen seine Männer nach einer süßen Frucht ihre Heimat, Odysseus schleppt sie zurück auf die Schiffe. Am Horizont taucht eine Insel mit einer riesigen Höhle auf.",
+  "episode_summary": "Nach zehn Jahren Krieg fällt Troja durch die List des Odysseus mit dem hölzernen Pferd. Auf dem Heimweg nach Ithaka plündern seine Männer die Stadt der Kikonen und verlieren viele Gefährten. Ein Sturm treibt die Schiffe ab. Auf der Insel der Lotophagen vergessen seine Männer nach einer süßen Frucht ihre Heimat, Odysseus schleppt sie zurück. Am Horizont taucht eine Insel mit einer riesigen Höhle auf.",
   "scenes": [
     {
       "narration": "Dieser Mann brauchte zehn Jahre, um nach Hause zu kommen. Und jeder Tag davon war ein Albtraum.",
@@ -21,7 +21,11 @@
       "visual_prompt": "Vertical 9:16 image. Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak on his ship looks at a small painted wooden portrait of a woman and a child, warm sunset light. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Doch ein Sturm packte seine Schiffe und warf sie weit vom Kurs ab, an eine fremde Küste.",
+      "narration": "Doch zuerst überfielen seine Männer noch die Stadt der Kikonen. Sie feierten zu lange. Am Morgen schlug der Feind zurück, und viele Gefährten kehrten nie an Bord zurück.",
+      "visual_prompt": "Vertical 9:16 image. Greek warriors running back to their ships on a beach at dawn while an enemy army charges down a hill, smoke over a burning town. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Dann packte ein Sturm seine Schiffe und warf sie weit vom Kurs ab, an eine fremde Küste.",
       "visual_prompt": "Vertical 9:16 image. Twelve ancient Greek ships tossed by gigantic waves under black storm clouds and lightning. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {

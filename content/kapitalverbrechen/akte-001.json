@@ -1,0 +1,44 @@
+{
+  "title": "Akte 001: Er verkaufte den Eiffelturm 🗼",
+  "description": "Paris 1925: Ein Betrüger verkauft den Eiffelturm an einen Schrotthändler. Und versucht es dann einfach nochmal. 🗼💰 Welchen Fall sollen wir als Nächstes öffnen?",
+  "hashtags": [
+    "#eiffelturm",
+    "#victorlustig",
+    "#hochstapler"
+  ],
+  "episode_summary": "Victor Lustig verkauft 1925 mit gefälschten Regierungspapieren den Eiffelturm als Schrott an André Poisson, kassiert Kaufpreis und Bestechungsgeld und flieht nach Wien. Poisson schämt sich zu sehr für eine Anzeige. Beim zweiten Versuch geht ein Händler zur Polizei, Lustig entkommt.",
+  "scenes": [
+    {
+      "narration": "Dieser Mann hat den Eiffelturm verkauft. An einen Schrotthändler. Und als das geklappt hat, hat er es einfach nochmal versucht.",
+      "visual_prompt": "Vertical 9:16 image. A mysterious elegant con man in a 1920s suit and fedora, seen from behind, standing in front of the Eiffel Tower at night, holding a briefcase. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Paris, 1925. Victor Lustig liest in der Zeitung: Der Eiffelturm rostet, die Wartung kostet ein Vermögen. Lustig lächelt. Er hat eine Idee.",
+      "visual_prompt": "Vertical 9:16 image. Close-up of gloved hands holding a 1920s French newspaper in a Paris café, a coffee cup and the Eiffel Tower visible through the window. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Er lässt sich gefälschtes Briefpapier der Regierung drucken und lädt Schrotthändler in eines der besten Hotels der Stadt ein. Streng geheim, sagt er.",
+      "visual_prompt": "Vertical 9:16 image. A luxurious 1920s Paris hotel salon with chandeliers, several businessmen in suits sitting around a table in dim golden light, faces in shadow. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Botschaft: Die Stadt will den Turm abreißen und als Schrott verkaufen. Siebentausend Tonnen Eisen. Wer bietet am meisten? Die Händler sind elektrisiert.",
+      "visual_prompt": "Vertical 9:16 image. The Eiffel Tower in dramatic fog with steel beams and rivets glowing in golden light, as if being measured for scrap. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Einer von ihnen, André Poisson, wird nervös. Ist das wirklich echt? Lustig gesteht ihm leise, er sei nur ein schlecht bezahlter Beamter. Ein kleines Extra würde helfen.",
+      "visual_prompt": "Vertical 9:16 image. Two men in 1920s suits whispering in a dark hotel corridor, one discreetly handing an envelope to the other, faces in shadow. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Genau das überzeugt Poisson. Denn wer Schmiergeld will, muss ja ein echter Beamter sein. Er zahlt den Kaufpreis und die Bestechung. Und Lustig steigt mit einem Koffer voller Geld in den Zug nach Wien.",
+      "visual_prompt": "Vertical 9:16 image. A 1920s steam train leaving a Paris station at night, a man in a fedora seen from behind boarding with a leather suitcase. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Und Poisson? Er schämt sich so sehr, dass er nie zur Polizei geht. Also kommt Lustig zurück und versucht es ein zweites Mal. Diesmal geht ein Händler zur Polizei. Doch Lustig ist schon wieder verschwunden.",
+      "visual_prompt": "Vertical 9:16 image. A 1920s Paris police officer blowing a whistle in a rainy street at night, an empty hotel room with an open window and a curtain blowing. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Lehre: Gute Betrüger überzeugen dich nicht mit Beweisen. Sondern damit, dass du glaubst, du hättest sie durchschaut. Folgt für Akte 002.",
+      "visual_prompt": "Vertical 9:16 image. A single gold coin spinning on a dark wooden table under a spotlight, a red wax seal next to it, film noir shadows. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    }
+  ]
+}

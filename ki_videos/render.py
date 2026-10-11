@@ -49,7 +49,13 @@ def _ass_time(t: float) -> str:
     return f"{cs // 360000}:{cs // 6000 % 60:02d}:{cs // 100 % 60:02d}.{cs % 100:02d}"
 
 
-def write_subtitles(words: list[dict], out: Path) -> None:
+def _ass_color(hex_color: str) -> str:
+    """'#RRGGBB' -> ASS-Farbe '&H00BBGGRR'."""
+    r, g, b = hex_color.lstrip("#")[0:2], hex_color.lstrip("#")[2:4], hex_color.lstrip("#")[4:6]
+    return f"&H00{b}{g}{r}".upper()
+
+
+def write_subtitles(words: list[dict], out: Path, color: str = "#FFFFFF") -> None:
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -57,7 +63,7 @@ PlayResY: {H}
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Arial,86,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,620,1
+Style: Default,Arial,86,{_ass_color(color)},&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,80,80,620,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text

@@ -6,7 +6,7 @@
     "#odyssee",
     "#aiolos"
   ],
-  "episode_summary": "Der Windgott Aiolos schenkt Odysseus einen Sack mit allen Stürmen, nur der Westwind bleibt frei. Ithaka kommt in Sicht, Odysseus schläft ein, und seine Männer öffnen den Sack, weil sie Gold vermuten. Die Stürme treiben sie zurück. Bei den riesenhaften Laistrygonen verliert er alle Schiffe bis auf eines. Am Ende landet er auf der Insel der Zauberin Kirke.",
+  "episode_summary": "Der Windgott Aiolos schenkt Odysseus einen Sack mit allen Stürmen, nur der Westwind bleibt frei. Ithaka kommt in Sicht, Odysseus schläft ein, und seine Männer öffnen den Sack, weil sie Gold vermuten. Die Stürme treiben sie zurück zu Aiolos, der ihn verjagt. Bei den riesenhaften Laistrygonen verliert er alle Schiffe bis auf eines. Am Ende landet er auf der Insel der Zauberin Kirke.",
   "scenes": [
     {
       "narration": "Poseidons Fluch lag jetzt auf ihm. Doch dann traf Odysseus einen Gott, der ihm helfen wollte. Aiolos, Herr der Winde.",
@@ -25,11 +25,15 @@
       "visual_prompt": "Vertical 9:16 image. Greek sailors secretly untying the glowing leather sack at night while Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak sleeps in the background. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Alle Stürme brachen auf einmal los. Sie wurden zurückgeschleudert, weit weg. Bei den riesenhaften Laistrygonen verlor er dann fast alles. Von zwölf Schiffen blieb nur eins.",
-      "visual_prompt": "Vertical 9:16 image. Hurricane winds explode out of the sack, the fleet scattered across a raging sea, a single ship escaping between giant rocks. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+      "narration": "Alle Stürme brachen auf einmal los. Die Schiffe wurden zurückgeschleudert, bis zur Insel des Aiolos. Doch der Gott jagte ihn davon: Wen die Götter so sehr hassen, dem helfe ich nicht.",
+      "visual_prompt": "Vertical 9:16 image. Hurricane winds explode out of the sack, the fleet scattered across a raging sea, an angry wind god pointing away from his island. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     },
     {
-      "narration": "Mit letzter Kraft erreichten sie eine Insel. Rauch stieg aus einem Palast im Wald. Dort wohnte eine Frau. Und sie war eine Zauberin.",
+      "narration": "Bei den riesenhaften Laistrygonen verlor er dann fast alles. Felsbrocken regneten auf den Hafen. Von zwölf Schiffen blieb nur eins.",
+      "visual_prompt": "Vertical 9:16 image. Giants on towering cliffs hurling boulders down onto ships in a narrow harbor, a single ship escaping to the open sea. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
+    },
+    {
+      "narration": "Mit letzter Kraft erreichten sie eine Insel. Rauch stieg aus einem Palast im Wald. Dort wohnte eine Frau. Und sie war eine Zauberin. Folgt, damit ihr Folge vier nicht verpasst.",
       "visual_prompt": "Vertical 9:16 image. A mysterious marble palace in a misty forest with smoke rising, a beautiful sorceress silhouette in the doorway surrounded by tame wolves and lions. Style: epic fantasy oil painting, dramatic chiaroscuro lighting, cinematic composition, ancient mediterranean world, highly detailed, rich deep colors."
     }
   ]

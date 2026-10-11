@@ -1,0 +1,44 @@
+{
+  "title": "Akte 002: 50 % Gewinn in 45 Tagen 💸",
+  "description": "Boston 1920: Ein Versprechen, das so gut klang, dass ein ganzes Betrugsmodell nach ihm benannt wurde. 💸 Kennst du jemanden, der in so etwas investiert hat?",
+  "hashtags": [
+    "#ponzi",
+    "#schneeballsystem",
+    "#betrug"
+  ],
+  "episode_summary": "Charles Ponzi verspricht 1920 in Boston 50 Prozent Gewinn in 45 Tagen mit einem angeblichen Trick mit internationalen Antwortscheinen der Post. Alte Anleger werden mit dem Geld neuer bezahlt. Die Boston Post rechnet nach, im August 1920 bricht alles zusammen, Ponzi wird verhaftet und stirbt Jahrzehnte später verarmt in Brasilien.",
+  "scenes": [
+    {
+      "narration": "Fünfzig Prozent Gewinn in fünfundvierzig Tagen. Dieses Versprechen war so gut, dass heute ein ganzes Betrugsmodell nach diesem Mann benannt ist. Ponzi.",
+      "visual_prompt": "Vertical 9:16 image. A charismatic man in a 1920s straw boater hat and suit, seen from the side in shadow, standing in front of a crowd holding money in Boston. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Boston, 1919. Charles Ponzi, ein Einwanderer aus Italien, entdeckt einen Trick mit internationalen Antwortscheinen der Post. In Italien kosten sie weniger, als sie in Amerika wert sind.",
+      "visual_prompt": "Vertical 9:16 image. Close-up of old international postal reply coupons and stamps on a desk with a magnifying glass, 1920s office, golden lamp light. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Auf dem Papier ein legaler Gewinn. In der Praxis kaum umsetzbar. Ponzi sammelt trotzdem Geld ein. Und zahlt die ersten Anleger pünktlich aus.",
+      "visual_prompt": "Vertical 9:16 image. A 1920s bank counter with stacks of dollar bills being pushed across to happy customers, faces turned away from the viewer. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Das Geheimnis: Der Gewinn der alten Anleger ist einfach das Geld der neuen. Investiert wird praktisch nichts. Solange immer mehr Menschen einzahlen, merkt es keiner.",
+      "visual_prompt": "Vertical 9:16 image. An abstract pyramid made of gold coins and dollar bills, the bottom layers crumbling, dramatic noir lighting. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Nachricht verbreitet sich wie ein Lauffeuer. Im Sommer 1920 fließen Millionen herein, Menschen stehen Schlange vor seinem Büro. Ponzi kauft sich eine Villa.",
+      "visual_prompt": "Vertical 9:16 image. A long queue of people in 1920s clothing in front of an office building in Boston, summer light, seen from above. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Dann rechnet eine Zeitung nach. Damit sein Geschäft aufgeht, müssten Millionen solcher Scheine existieren. Im Umlauf ist nur ein winziger Bruchteil.",
+      "visual_prompt": "Vertical 9:16 image. A 1920s newspaper printing press running at night, freshly printed pages flying, ink and shadows. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Im August 1920 bricht alles zusammen. Ponzi wird verhaftet, Tausende Anleger verlieren ihr Geld. Jahrzehnte später stirbt er verarmt in Brasilien.",
+      "visual_prompt": "Vertical 9:16 image. A pair of handcuffs lying on scattered dollar bills on a dark floor, a single red light from a police car. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    },
+    {
+      "narration": "Die Lehre: Wenn hohe Renditen nur bezahlt werden, weil ständig neue Leute einzahlen, ist das kein Investment. Es ist ein Schneeballsystem. Folgt für Akte 003.",
+      "visual_prompt": "Vertical 9:16 image. A snowball rolling down a dark hill and growing huge, made of banknotes, gold and black noir lighting. Style: cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look, faces in shadow or seen from behind, highly detailed."
+    }
+  ]
+}

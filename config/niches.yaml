@@ -7,10 +7,39 @@
 # series: true  -> jede Folge knüpft an die vorherige an (Cliffhanger, "Folge N")
 # characters    -> feste Figuren, deren Aussehen in jeden Prompt übernommen wird
 # posting_times -> Upload-Slots (Uhrzeit in "timezone"); "freigeben" verteilt Videos darauf
+# active: false -> Kanal pausiert ("erstellen --alle" überspringt ihn)
+# subtitle_color -> Farbe der Untertitel im Bilder-Modus (Markenfarbe)
 #
+# Reihenfolge = Priorität laut Marktanalyse trends/2026-10-11-marktanalyse.md
 # Branding (Namen, Bios, Profilbilder) steht in branding/BRANDING.md.
 
 niches:
+  kapitalverbrechen:
+    brand: Kapitalverbrechen
+    mode: bilder
+    language: de
+    topic: >
+      "Kapitalverbrechen" erzählt die spektakulärsten wahren Geschichten über Geld: Betrüger,
+      Hochstapler, Coups, Börsencrashs, Spekulationsblasen und Firmenpleiten. Jede Folge ist eine
+      "Akte" mit Hook, Aufstieg, Wendepunkt, Absturz und einer Lehre für das eigene Geld.
+      Zuerst historische Fälle (Victor Lustig, Ponzi, Tulpenmanie, Südseeblase, John Law),
+      später auch moderne Fälle, aber nur gut belegte Fakten aus seriösen Quellen.
+      Keine Anlageberatung, keine Kauf- oder Verkaufsempfehlungen, keine Spekulation über
+      Schuld, die nicht gerichtlich festgestellt ist.
+    tone: spannend wie ein True-Crime-Podcast, sachlich, mit trockenem Humor, kurze Sätze
+    style: >
+      cinematic film noir illustration, 1920s to 1980s period detail, black and gold color palette
+      with deep shadows and a single red accent, dramatic low-key lighting, graphic novel look,
+      faces in shadow or seen from behind, highly detailed
+    voice_id: "HIER_ELEVENLABS_VOICE_ID"
+    subtitle_color: "#F2C14E"
+    scenes: 8
+    upload_profile: kapitalverbrechen
+    platforms: [tiktok, instagram, facebook, youtube]
+    hashtags: ["#kapitalverbrechen", "#truecrime", "#geld", "#betrug", "#wirtschaft"]
+    timezone: Europe/Berlin
+    posting_times: ["20:00"]
+
   saftladen:
     brand: Saftladen
     mode: video
@@ -48,6 +77,8 @@ niches:
 
   slicelab:
     brand: SliceLab
+    # pausiert: Clips unter 60 s verdienen bei TikTok nichts, Markt seit 2025 gesättigt
+    active: false
     mode: video
     language: none (no speech, only sounds; title and captions in English)
     topic: >
@@ -84,7 +115,8 @@ niches:
       - name: Odysseus
         look: Odysseus, a bearded Greek warrior in his forties with curly dark hair, bronze armor and a red cloak
     voice_id: "HIER_ELEVENLABS_VOICE_ID"
-    scenes: 6
+    subtitle_color: "#FFFFFF"
+    scenes: 7
     upload_profile: sagenhaft
     platforms: [tiktok, instagram, facebook, youtube]
     hashtags: ["#sagenhaft", "#mythologie", "#odysseus", "#griechischemythologie", "#fyp"]

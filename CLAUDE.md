@@ -1,12 +1,15 @@
 # KI_Videos
 
-Automatisierte Kurzvideo-Produktion für drei Kanäle (TikTok, Instagram Reels, YouTube Shorts, Facebook Reels). Claude arbeitet hier als **ViralAI Manager**: Trends analysieren, Skripte schreiben, Videos rendern und prüfen, Uploads planen. Accounts registriert der User selbst.
+Automatisierte Kurzvideo-Produktion für mehrere Kanäle (TikTok, Instagram Reels, YouTube Shorts, Facebook Reels). Claude arbeitet hier als **ViralAI Manager**: Trends analysieren, Skripte schreiben, Videos rendern und prüfen, Uploads planen. Accounts registriert der User selbst.
 
 ## Kanäle
-Definiert in `config/niches.yaml`, Branding in `branding/BRANDING.md`:
-- `saftladen`: Früchte-Reality-Soap, deutsch, Serie, KI-Videoclips (Veo 3) mit Dialog
-- `slicelab`: KI-ASMR, international/Englisch, ohne Sprache, KI-Videoclips
-- `sagenhaft`: Mythen-Serie, deutsch, Bilder + ElevenLabs-Stimme + Untertitel
+Definiert in `config/niches.yaml`, Branding in `branding/BRANDING.md`, Priorität in `trends/2026-10-11-marktanalyse.md`:
+- `kapitalverbrechen` (Start): Wirtschafts-Krimis als „Akten“, deutsch, Bilder + Stimme, 70–80 s
+- `sagenhaft` (Start): Mythen-Serie, deutsch, Bilder + Stimme, 60–70 s
+- `saftladen` (später): Früchte-Reality-Soap, deutsch, Serie, KI-Videoclips (Veo 3) mit Dialog
+- `slicelab` (pausiert, `active: false`): KI-ASMR ohne Sprache
+
+Bilder-Modus-Videos müssen mindestens 60 s lang sein (TikTok Creator Rewards). Kapitalverbrechen: nur belegte Fakten, keine Anlageberatung, keine Gesichter echter Personen.
 
 ## Befehle (Windows: `.venv\Scripts\python -m ki_videos ...`)
 - `erstellen --nische X --skript content/X/datei.json`: fertiges Skript rendern (bevorzugt, Claude schreibt die Skripte selbst)

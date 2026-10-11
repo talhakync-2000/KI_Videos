@@ -44,7 +44,8 @@ Allgemeine Regeln:
 
 MODE_RULES = {
     "bilder": """Format: Standbilder mit Erzählstimme.
-- narration: gesprochener Erzähltext der Szene. Gesamt 25-45 Sekunden (ca. 70-120 Wörter), kurze Sätze, keine Emojis.
+- narration: gesprochener Erzähltext der Szene. Gesamt 62-75 Sekunden (ca. 155-180 Wörter), damit das Video
+  für TikTok Creator Rewards zählt (nur Videos ab 60 Sekunden). Kurze Sätze, keine Emojis.
 - visual_prompt: beschreibt ein einzelnes Standbild.
 - Fakten müssen stimmen. Wenn etwas unsicher ist, lass es weg.
 - Die letzte Szene endet mit einer Frage oder einem Aufruf zum Folgen.""",
