@@ -27,3 +27,11 @@ Danach jedes Video ansehen (oder `/tagesproduktion` prüfen lassen), dann `freig
 | 7 | kapitalverbrechen | 20:00 | `content/kapitalverbrechen/akte-007.json` | Akte 007: Der Hauptmann von Köpenick 🎖️ |
 
 Saftladen (3 Folgen) und SliceLab (5 Videos) liegen ebenfalls in `content/`, sind laut Marktanalyse aber erst später dran.
+
+## Sonderfolge
+
+| Datum | Kanal | Uhrzeit | Skript | Titel |
+|---|---|---|---|---|
+| **31.10. (Halloween)** | kapitalverbrechen | 20:00 | `content/kapitalverbrechen/akte-008.json` | Akte 008: Die Geister-Schwestern 👻 |
+
+Akte 008 erst am 30.10. rendern und freigeben, damit sie genau auf Halloween fällt (`freigeben` nimmt den nächsten freien Slot).
